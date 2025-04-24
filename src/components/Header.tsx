@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
+import { Dropdown } from "@/components/ui/Dropdown";
 import { LinkButton } from "@/components/ui/LinkButton";
 
 import { MoonIcon, PlusIcon, SunIcon, UserIcon } from "lucide-react";
@@ -29,7 +30,7 @@ export const Header = () => {
           <h1 className="gradient-text text-xl font-bold md:text-2xl">bottle.vote</h1>
         </Link>
 
-        <div className="flex gap-4">
+        <div className="hidden sm:flex sm:gap-4">
           {/* 다크모드 */}
           <Button
             variant="icon"
@@ -56,6 +57,19 @@ export const Header = () => {
             <UserIcon className="h-4 w-4" />
             <span className="sr-only">프로필</span>
           </LinkButton>
+        </div>
+
+        <div className="sm:hidden">
+          <Dropdown className="right-4">
+            <Link href="/profile">프로필</Link>
+            <Link href="/vote/create">투표 생성하기</Link>
+            <Button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="w-full text-left font-medium"
+            >
+              테마 변경
+            </Button>
+          </Dropdown>
         </div>
       </div>
     </header>
