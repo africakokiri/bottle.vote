@@ -5,7 +5,7 @@ import * as motion from "motion/react-client";
 
 export default function page() {
   return (
-    <div className="container mx-auto space-y-4">
+    <div className="container mx-auto space-y-8">
       {/* Hero */}
       <div>
         <motion.section
@@ -45,6 +45,21 @@ rounded-2xl border px-8 py-12"
 
       {/* 인기 투표 */}
       <PopularVotes />
+
+      <div className="mb-8 flex justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.6, duration: 0.4 }}
+        >
+          <LinkButton
+            href="/vote/create"
+            className="gradient-bg"
+          >
+            더 많은 투표 보기
+          </LinkButton>
+        </motion.div>
+      </div>
     </div>
   );
 }
