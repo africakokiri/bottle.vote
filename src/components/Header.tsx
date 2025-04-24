@@ -23,7 +23,7 @@ export const Header = () => {
   }
 
   return (
-    <header className="bg-element/30 fixed z-10 w-full border-b backdrop-blur-lg">
+    <header className="bg-element/30 fixed z-10 w-full border-b backdrop-blur-md">
       <div className="container flex h-16 items-center justify-between">
         {/* 타이틀 */}
         <Link href="/">
