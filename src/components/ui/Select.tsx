@@ -31,19 +31,21 @@ export const Select = ({ options, width }: SelectProps) => {
   return (
     <div
       ref={ref}
-      className={"bg-background-light relative w-32 rounded-md border"}
+      className="bg-element relative w-32 rounded-md border"
       style={{ width }}
       role="combobox"
       aria-expanded={isOpen}
       aria-controls="select-listbox"
     >
       <div
-        className="focus-within:ring-offset-background-light relative flex items-center rounded-md
-ring-offset-2 transition focus-within:ring-2 focus-within:ring-fuchsia-500"
+        className="focus-within:ring-offset-background-light focus-within:ring-offset-element relative
+flex items-center rounded-md py-0.5 ring-offset-2 transition focus-within:ring-2
+focus-within:ring-fuchsia-500"
       >
         <button
           onClick={() => setIsOpen((prev) => !prev)}
-          className="dark:hover:bg-border block w-full rounded-md px-2 py-1.5 text-left hover:bg-white"
+          className="block w-full rounded-md px-2 py-1.5 text-left hover:bg-white
+dark:hover:bg-neutral-700"
           type="button"
         >
           {selectedOption.label}
@@ -57,7 +59,7 @@ ring-offset-2 transition focus-within:ring-2 focus-within:ring-fuchsia-500"
           animate={{ y: 0 }}
           transition={{ duration: 0.2 }}
           style={{ width }}
-          className="bg-background-light absolute top-12 z-50 w-32 rounded-md border p-0.5 shadow-md"
+          className="bg-element absolute top-12 z-50 w-32 rounded-md border p-0.5 shadow-md"
         >
           {options.map((option, index) => (
             <div
@@ -68,7 +70,7 @@ ring-offset-2 transition focus-within:ring-2 focus-within:ring-fuchsia-500"
                 setIsOpen(false);
                 setSelectedOption(option);
               }}
-              className="hover:bg-background-light-hover block w-full cursor-default rounded-md px-2
+              className="hover:bg-background bg-element block w-full cursor-default rounded-md px-2
 py-1.5 text-left"
             >
               {option.label}
