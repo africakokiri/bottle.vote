@@ -28,7 +28,7 @@ export const Modal = ({ setIsOpen }: { setIsOpen: Dispatch<SetStateAction<boolea
   return (
     <div
       className="absolute top-0 left-0 z-20 flex h-dvh w-dvw items-center justify-center
-bg-neutral-900/30 backdrop-blur-md"
+bg-neutral-900/30 backdrop-blur-sm"
       onClick={() => setIsOpen(false)}
     >
       <motion.div
