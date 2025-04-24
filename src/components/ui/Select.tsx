@@ -31,7 +31,8 @@ export const Select = ({ options, width }: SelectProps) => {
   return (
     <div
       ref={ref}
-      className="bg-element relative w-32 rounded-md border"
+      className="bg-element relative w-32 rounded-md border transition hover:border-[1px]
+hover:border-fuchsia-500"
       style={{ width }}
       role="combobox"
       aria-expanded={isOpen}
