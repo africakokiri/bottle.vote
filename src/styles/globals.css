@@ -33,6 +33,10 @@
   .gradient-text {
     @apply bg-gradient-to-r from-blue-500 to-fuchsia-500 bg-clip-text text-transparent;
   }
+
+  .gradient-bg {
+    @apply bg-gradient-to-r from-blue-500 to-fuchsia-500 text-white hover:from-blue-400 hover:to-fuchsia-400;
+  }
 }
 
 @layer base {
