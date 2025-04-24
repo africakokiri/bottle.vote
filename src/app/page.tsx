@@ -53,7 +53,7 @@ rounded-2xl border px-8 py-12"
           transition={{ delay: 1.6, duration: 0.4 }}
         >
           <LinkButton
-            href="/vote/create"
+            href="/vote/list"
             className="gradient-bg"
           >
             더 많은 투표 보기
