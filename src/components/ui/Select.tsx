@@ -31,8 +31,7 @@ export const Select = ({ options, width }: SelectProps) => {
   return (
     <div
       ref={ref}
-      className="bg-element relative w-32 rounded-md border transition hover:border-[1px]
-hover:border-fuchsia-500"
+      className="bg-element relative w-32 rounded-md transition"
       style={{ width }}
       role="combobox"
       aria-expanded={isOpen}
@@ -40,8 +39,8 @@ hover:border-fuchsia-500"
     >
       <div
         className="focus-within:ring-offset-background-light focus-within:ring-offset-element relative
-flex items-center rounded-md py-0.5 ring-offset-2 transition focus-within:ring-2
-focus-within:ring-fuchsia-500"
+flex items-center rounded-md border py-0.5 ring-offset-2 transition focus-within:ring-2
+focus-within:ring-fuchsia-500 hover:border-[1px] hover:border-fuchsia-500"
       >
         <button
           onClick={() => setIsOpen((prev) => !prev)}
