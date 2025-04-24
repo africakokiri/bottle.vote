@@ -1,10 +1,11 @@
+import { PopularVotes } from "@/components/PopularVotes";
 import { LinkButton } from "@/components/ui/LinkButton";
 
 import * as motion from "motion/react-client";
 
 export default function page() {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto space-y-4">
       {/* Hero */}
       <div>
         <motion.section
@@ -41,6 +42,9 @@ rounded-2xl border px-8 py-12"
           </div>
         </motion.section>
       </div>
+
+      {/* 인기 투표 */}
+      <PopularVotes />
     </div>
   );
 }
