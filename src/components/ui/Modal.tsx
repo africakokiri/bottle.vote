@@ -1,16 +1,20 @@
 "use client";
 
-import { Button } from "@/components/ui/Button";
-import { categories } from "@/const/const";
+import { cn } from "@/utils/cn";
 
 import { motion } from "motion/react";
-import { type Dispatch, type SetStateAction, useEffect, useRef } from "react";
+import { type Dispatch, type ReactNode, type SetStateAction, useEffect, useRef } from "react";
 
-export const Modal = ({ setIsOpen }: { setIsOpen: Dispatch<SetStateAction<boolean>> }) => {
+type ModalProps = {
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  header?: ReactNode;
+  body?: ReactNode;
+  footer?: ReactNode;
+  className?: string;
+};
+
+export const Modal = ({ setIsOpen, header, body, footer, className }: ModalProps) => {
   const divRef = useRef<HTMLDivElement>(null);
-
-  const left = categories.slice(1, categories.length / 2 + 1);
-  const right = categories.slice(categories.length / 2 + 1);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -35,64 +39,18 @@ bg-neutral-900/30 backdrop-blur-sm"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2 }}
-        className="bg-element container mx-4 flex w-4/5 max-w-xl flex-col items-center justify-center
-gap-4 rounded-lg border"
+        className={cn(
+          `bg-element container mx-4 flex w-4/5 max-w-xl flex-col items-center justify-center gap-4
+rounded-lg border`,
+          className
+        )}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex flex-col items-center justify-center gap-2">
-          <h2 className="text-lg font-semibold">투표 필터링</h2>
-          <p className="text-sm text-neutral-500">카테고리를 선택해 투표를 필터링해요.</p>
-        </div>
+        {header && <header className="w-full">{header}</header>}
 
-        <div className="w-full space-y-2 text-sm">
-          <h3>카테고리</h3>
-          <div className="flex justify-between">
-            <ul className="w-1/2 space-y-2">
-              {left.map(({ id, name }) => {
-                return (
-                  <li
-                    key={id}
-                    className="space-x-2"
-                  >
-                    <input
-                      id={id}
-                      type="checkbox"
-                      className="h-4 w-4 accent-black"
-                    />
-                    <label htmlFor={id}>{name}</label>
-                  </li>
-                );
-              })}
-            </ul>
-            <ul className="w-1/2 space-y-2">
-              {right.map(({ id, name }) => {
-                return (
-                  <li
-                    key={id}
-                    className="space-x-2"
-                  >
-                    <input
-                      id={id}
-                      type="checkbox"
-                      className="h-4 w-4 accent-black"
-                    />
-                    <label htmlFor={id}>{name}</label>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+        <div className="w-full text-sm">{body && <>{body}</>}</div>
 
-          <div className="flex flex-col gap-2 pt-4">
-            <Button
-              className="gradient-bg"
-              onClick={() => setIsOpen(false)}
-            >
-              적용하기
-            </Button>
-            <Button className="bg-background border">필터 초기화</Button>
-          </div>
-        </div>
+        {footer && <footer className="w-full">{footer}</footer>}
       </motion.div>
     </div>
   );
