@@ -12,7 +12,7 @@ export const Search = () => {
         <Input className="bg-element w-full !p-2" />
         <Button
           variant="icon"
-          className="absolute right-0.5"
+          className="absolute right-1 !p-2"
         >
           <SearchIcon className="h-4 w-4" />
         </Button>
