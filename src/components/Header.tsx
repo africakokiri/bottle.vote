@@ -35,6 +35,7 @@ export const Header = () => {
           <Button
             variant="icon"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="bg-transparent"
           >
             {theme === "dark" ? <SunIcon className="h-4 w-4" /> : <MoonIcon className="h-4 w-4" />}
             <span className="sr-only">테마 전환</span>
@@ -44,6 +45,7 @@ export const Header = () => {
           <LinkButton
             variant="icon"
             href="/vote/create"
+            className="bg-transparent"
           >
             <PlusIcon className="h-4 w-4" />
             <span className="sr-only">투표 생성</span>
@@ -53,6 +55,7 @@ export const Header = () => {
           <LinkButton
             variant="icon"
             href="/profile"
+            className="bg-transparent"
           >
             <UserIcon className="h-4 w-4" />
             <span className="sr-only">프로필</span>
