@@ -35,8 +35,8 @@ bg-neutral-900/30 backdrop-blur-sm"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2 }}
-        className="bg-element container mx-4 flex w-4/5 flex-col items-center justify-center gap-4
-rounded-lg border"
+        className="bg-element container mx-4 flex w-4/5 max-w-xl flex-col items-center justify-center
+gap-4 rounded-lg border"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex flex-col items-center justify-center gap-2">
