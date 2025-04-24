@@ -17,7 +17,8 @@ export const Button = ({ children, className, ref, variant, ...props }: ButtonPr
   return (
     <button
       className={cn(
-        "bg-element min-w-fit cursor-pointer rounded-md px-4 py-2 font-semibold hover:bg-neutral-200",
+        `bg-element min-w-fit cursor-pointer rounded-md px-4 py-2 font-semibold hover:bg-neutral-200
+dark:hover:bg-neutral-700`,
         buttonVariant,
         className
       )}
