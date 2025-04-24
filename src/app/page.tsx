@@ -5,7 +5,7 @@ import * as motion from "motion/react-client";
 
 export default function page() {
   return (
-    <div className="container mx-auto space-y-8">
+    <div className="container space-y-8">
       {/* Hero */}
       <div>
         <motion.section
@@ -35,7 +35,7 @@ rounded-2xl border px-8 py-12"
             </LinkButton>
             <LinkButton
               href="/vote/list"
-              className="bg-background border"
+              className="bg-element border"
             >
               투표 둘러보기
             </LinkButton>
