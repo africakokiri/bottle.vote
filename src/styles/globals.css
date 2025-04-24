@@ -48,3 +48,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* 메인 화면 투표 개수 조정 */
+@media (max-width: 640px) {
+  .vote-grid > :nth-child(n + 6) {
+    display: none;
+  }
+}
