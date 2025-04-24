@@ -40,8 +40,8 @@ transition focus-within:ring-2 focus-within:ring-fuchsia-500"
           initial={{ y: -5 }}
           animate={{ y: 0 }}
           transition={{ duration: 0.1 }}
-          className={`${className} *:bg-background bg-background absolute top-14 w-32 rounded-md border
-p-0.5 *:block *:cursor-default *:rounded-md *:px-2 *:py-1.5`}
+          className={`${className} *:bg-element bg-element absolute top-14 w-32 rounded-md border p-0.5
+*:block *:cursor-default *:rounded-md *:px-2 *:py-1.5`}
         >
           {children}
         </motion.div>
