@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^6.6.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.503.0",
     "motion": "^12.8.2",
@@ -32,8 +33,9 @@
     "prettier-plugin-classnames": "^0.7.7",
     "prettier-plugin-merge": "^0.7.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "tailwindcss": "^4.1.4",
+    "prisma": "^6.6.0",
     "tailwind-merge": "^3.2.0",
+    "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.29.1"
   }
