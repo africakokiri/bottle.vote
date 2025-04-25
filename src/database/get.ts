@@ -4,12 +4,15 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-// 모든 투표를 불러온다.
-export const getAllVotes = async () => {
+// 모든 투표를 날짜 내림차순으로 불러온다.
+export const getAllVotesByDesc = async () => {
   const allPosts = await prisma.votes.findMany({
     include: {
       users: true,
       vote_options: true
+    },
+    orderBy: {
+      created_at: "desc"
     }
   });
 
