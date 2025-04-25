@@ -29,3 +29,17 @@ export const getPopularVotes = async (howMany: number) => {
 
   return popularVotes;
 };
+
+export const getVotesLength = async () => {
+  const allVotesLength = await prisma.votes.count({});
+
+  const activeVotesLength = await prisma.votes.count({
+    where: {
+      expires_at: {
+        gte: new Date()
+      }
+    }
+  });
+
+  return { allVotesLength, activeVotesLength };
+};
