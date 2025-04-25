@@ -126,7 +126,8 @@ exports.Prisma.UsersScalarFieldEnum = {
 exports.Prisma.Vote_optionsScalarFieldEnum = {
   id: 'id',
   vote_id: 'vote_id',
-  name: 'name'
+  name: 'name',
+  vote_count: 'vote_count'
 };
 
 exports.Prisma.VotesScalarFieldEnum = {
