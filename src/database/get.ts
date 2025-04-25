@@ -15,7 +15,7 @@ export const getAllVotes = async () => {
   return allPosts;
 };
 
-export const getPopularVotes = async (howMany: number) => {
+export const getPopularVotes = async (howMany?: number) => {
   const popularVotes = await prisma.votes.findMany({
     include: {
       users: true,
@@ -24,7 +24,7 @@ export const getPopularVotes = async (howMany: number) => {
     orderBy: {
       vote_count: "desc"
     },
-    take: howMany
+    ...(howMany && { take: howMany })
   });
 
   return popularVotes;
