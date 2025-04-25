@@ -1,5 +1,6 @@
 import { type Prisma } from "@/generated/prisma";
 
+import { format } from "date-fns";
 import * as motion from "motion/react-client";
 import Link from "next/link";
 
@@ -48,7 +49,11 @@ text-xs text-[10px] font-semibold text-neutral-700"
               <div className="min-h-4 min-w-4 rounded-full bg-neutral-500" />
               <h4>{"asd"}</h4>
             </div>
-            <p>{new Date(vote.created_at).toLocaleDateString()}</p>
+            <p>
+              <span>{format(new Date(vote.created_at), "yyyy-MM-dd")}</span>
+              <span> ~ </span>
+              <span>{format(new Date(vote.expires_at), "yyyy-MM-dd")}</span>
+            </p>
           </footer>
         </div>
 
