@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { TanstackQueryWrapper } from "@/libs/tanstack-query/TanstackQueryWrapper";
 import "@/styles/globals.css";
 
 import type { Metadata } from "next";
@@ -26,15 +27,16 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className={`${inter.className}`}>
-        <Header />
-        <ThemeProvider
-          attribute="class"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-          <div className="pt-16">{children}</div>
-        </ThemeProvider>
+        <TanstackQueryWrapper>
+          <ThemeProvider
+            attribute="class"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
+            <div className="pt-16">{children}</div>
+          </ThemeProvider>
+        </TanstackQueryWrapper>
       </body>
     </html>
   );
