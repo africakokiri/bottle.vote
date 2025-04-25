@@ -1,9 +1,11 @@
 import { VoteCard } from "@/components/ui/VoteCard";
-import { popularVotes } from "@/mock/votes";
+import { getPopularVotes } from "@/database/get";
 
 import * as motion from "motion/react-client";
 
-export const PopularVotes = () => {
+export const PopularVotes = async ({ howMany }: { howMany: number }) => {
+  const popularVotes = await getPopularVotes(howMany);
+
   const container = {
     hidden: {},
     show: {
@@ -46,7 +48,7 @@ export const PopularVotes = () => {
                 variants={item}
                 key={popularVote.id}
               >
-                <VoteCard popularVote={popularVote} />
+                <VoteCard vote={popularVote} />
               </motion.div>
             );
           })}
