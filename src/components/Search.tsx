@@ -2,36 +2,22 @@
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { getVotesLength } from "@/database/get";
+import { useGetVotesLength } from "@/hooks/useGetVotes";
 
 import { SearchIcon } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
 
 export const Search = () => {
-  const [votesLength, setVotesLength] = useState({
-    allVotesLength: 0,
-    activeVotesLength: 0
-  });
+  const { data, error } = useGetVotesLength();
 
-  const fetchVotesLength = useCallback(async () => {
-    const data = await getVotesLength();
-    setVotesLength({
-      allVotesLength: Number(data.allVotesLength),
-      activeVotesLength: Number(data.activeVotesLength)
-    });
-  }, []);
-
-  useEffect(() => {
-    fetchVotesLength();
-  }, [fetchVotesLength]);
+  if (error) throw new Error(error.message);
 
   return (
     <div className="flex w-full gap-2">
       <form className="relative flex flex-1 items-center">
         <Input
           placeholder={
-            votesLength.activeVotesLength
-              ? `총 ${votesLength.allVotesLength}개의 투표와 ${votesLength.activeVotesLength}개의 진행중인 투표`
+            data
+              ? `총 ${data.allVotesLength}개의 투표와 ${data.activeVotesLength}개의 진행중인 투표`
               : "..."
           }
           className="bg-element w-full !p-2"
