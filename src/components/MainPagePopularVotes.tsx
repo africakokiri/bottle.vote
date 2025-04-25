@@ -1,10 +1,10 @@
 import { VoteCard } from "@/components/ui/VoteCard";
-import { getPopularVotes } from "@/database/get";
+import { getAllPopularVotes } from "@/database/get";
 
 import * as motion from "motion/react-client";
 
 export const PopularVotes = async ({ howMany }: { howMany: number }) => {
-  const popularVotes = await getPopularVotes(howMany);
+  const popularVotes = await getAllPopularVotes(howMany);
 
   const container = {
     hidden: {},

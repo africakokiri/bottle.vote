@@ -1,5 +1,6 @@
 import { Search } from "@/components/Search";
 import { SelectAndFilter } from "@/components/SelectAndFilter";
+import { VoteListPageVotes } from "@/components/VoteListPageVotes";
 
 export default function page() {
   return (
@@ -8,12 +9,16 @@ export default function page() {
         <h1 className="text-3xl font-bold">투표 목록</h1>
       </div>
 
-      <div className="gap-4 space-y-4 sm:flex">
-        {/* 검색  */}
-        <Search />
+      <div className="spcae-y-8">
+        <div className="gap-4 space-y-4 sm:flex">
+          {/* 검색  */}
+          <Search />
 
-        {/* 모든 투표 / 인기투표 */}
-        <SelectAndFilter />
+          {/* 모든 투표 / 인기투표 */}
+          <SelectAndFilter />
+        </div>
+
+        <VoteListPageVotes />
       </div>
     </div>
   );

@@ -35,7 +35,7 @@ export const getAllVotesByAsc = async () => {
 };
 
 // 인기 있는 포스트 순서대로 투표를 불러온다.
-export const getPopularVotes = async (howMany?: number) => {
+export const getAllPopularVotes = async (howMany?: number) => {
   const popularVotes = await prisma.votes.findMany({
     include: {
       users: true,

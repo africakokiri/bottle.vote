@@ -1,6 +1,6 @@
 "use client";
 
-import { getAllVotesByDesc, getPopularVotes, getVotesLength } from "@/database/get";
+import { getAllPopularVotes, getAllVotesByDesc, getVotesLength } from "@/database/get";
 
 import { useQuery } from "@tanstack/react-query";
 
@@ -26,7 +26,7 @@ export const useGetAllVotesByAsc = () => {
 export const useGetPopularVotes = () => {
   return useQuery({
     queryKey: ["popularVotes"],
-    queryFn: () => getPopularVotes(),
+    queryFn: () => getAllPopularVotes(),
     refetchOnMount: false
   });
 };
