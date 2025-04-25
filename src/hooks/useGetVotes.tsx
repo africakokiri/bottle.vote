@@ -4,8 +4,17 @@ import { getAllVotesByDesc, getPopularVotes, getVotesLength } from "@/database/g
 
 import { useQuery } from "@tanstack/react-query";
 
-// 모든 투표를 불러온다.
-export const useGetAllVotes = () => {
+// 모든 투표를 날짜 내림차순으로 불러온다.
+export const useGetAllVotesByDesc = () => {
+  return useQuery({
+    queryKey: ["allVotes"],
+    queryFn: () => getAllVotesByDesc(),
+    refetchOnMount: false
+  });
+};
+
+// 모든 투표를 날짜 오름차순으로 불러온다.
+export const useGetAllVotesByAsc = () => {
   return useQuery({
     queryKey: ["allVotes"],
     queryFn: () => getAllVotesByDesc(),
