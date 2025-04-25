@@ -1,12 +1,21 @@
+import { type Prisma } from "@/generated/prisma";
+
 import * as motion from "motion/react-client";
 import Link from "next/link";
 
-type CardProps = {
-  popularVote: any;
+type VoteWithUser = Prisma.votesGetPayload<{
+  include: {
+    users: true;
+    vote_options: true;
+  };
+}>;
+
+type VoteCardProps = {
+  vote: VoteWithUser;
   className?: string;
 };
 
-export const VoteCard = ({ popularVote: vote, className }: CardProps) => {
+export const VoteCard = ({ vote, className }: VoteCardProps) => {
   return (
     <motion.div
       whileHover={{ y: -10 }}
@@ -37,43 +46,39 @@ text-xs text-[10px] font-semibold text-neutral-700"
           <footer className="flex items-center justify-between py-0.5 pt-2 text-[10px]">
             <div className="flex items-center gap-2">
               <div className="min-h-4 min-w-4 rounded-full bg-neutral-500" />
-              <h4>{vote.created_by.name}</h4>
+              <h4>{"asd"}</h4>
             </div>
-            <p>{vote.created_at}</p>
+            <p>{new Date(vote.created_at).toLocaleDateString()}</p>
           </footer>
         </div>
 
         <div className="flex min-w-[40%] flex-col justify-center border-l p-3">
-          {vote.options
-            .sort((a, b) => b.votes - a.votes)
-            .slice(0, 2)
-            .map((option, index) => (
-              <div
-                key={index}
-                className="relative mb-1.5 pt-1"
-              >
-                <div className="mb-0.5 flex items-center justify-between">
-                  <div className="text-foreground truncate text-[10px]">{option.name}</div>
-                  <div className="text-[10px] text-neutral-500 dark:text-neutral-400">
-                    {Math.round((option.votes / vote.vote_count) * 100)}%
-                  </div>
-                </div>
-                <div
-                  className="flex h-1.5 overflow-hidden rounded bg-neutral-200 text-xs
-dark:bg-neutral-700"
-                >
-                  <div
-                    className="gradient-bg h-full rounded"
-                    style={{
-                      width: `${(option.votes / vote.vote_count) * 100}%`
-                    }}
-                  ></div>
+          {vote.vote_options.slice(0, 2).map((option, index) => (
+            <div
+              key={index}
+              className="relative mb-1.5 pt-1"
+            >
+              <div className="mb-0.5 flex items-center justify-between">
+                <div className="text-foreground truncate text-[10px]">{option.name}</div>
+                <div className="text-[10px] text-neutral-500 dark:text-neutral-400">
+                  {Math.round((option.vote_count / vote.vote_count) * 100)}%
                 </div>
               </div>
-            ))}
-          {vote.options.length > 2 && (
+              <div
+                className="flex h-1.5 overflow-hidden rounded bg-neutral-200 text-xs dark:bg-neutral-700"
+              >
+                <div
+                  className="gradient-bg h-full rounded"
+                  style={{
+                    width: `${(option.vote_count / vote.vote_count) * 100}%`
+                  }}
+                ></div>
+              </div>
+            </div>
+          ))}
+          {vote.vote_options.length > 2 && (
             <div className="text-center text-[10px] text-neutral-500 dark:text-neutral-400">
-              +{vote.options.length - 2}개 더 보기
+              +{vote.vote_options.length - 2}개 더 보기
             </div>
           )}
         </div>
