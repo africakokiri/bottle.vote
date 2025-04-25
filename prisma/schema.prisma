@@ -17,7 +17,7 @@ model users {
 }
 
 model vote_options {
-  id         Int     @id @default(autoincrement())
+  id         BigInt  @id @default(autoincrement())
   vote_id    BigInt?
   name       String
   vote_count Int     @default(0)
