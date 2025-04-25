@@ -31,15 +31,19 @@ export const getPopularVotes = async (howMany: number) => {
 };
 
 export const getVotesLength = async () => {
-  const allVotesLength = await prisma.votes.count({});
+  const result = await prisma.$queryRaw<
+    {
+      allVotesLength: bigint;
+      activeVotesLength: bigint;
+    }[]
+  >`
+  SELECT 
+    COUNT(*) AS "allVotesLength",
+    COUNT(CASE WHEN expires_at >= NOW() THEN 1 END) AS "activeVotesLength"
+  FROM votes
+`;
 
-  const activeVotesLength = await prisma.votes.count({
-    where: {
-      expires_at: {
-        gte: new Date()
-      }
-    }
-  });
+  const { allVotesLength, activeVotesLength } = result[0];
 
   return { allVotesLength, activeVotesLength };
 };
