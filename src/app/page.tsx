@@ -44,7 +44,7 @@ rounded-2xl border px-8 py-12"
       </div>
 
       {/* 인기 투표 */}
-      <PopularVotes />
+      <PopularVotes howMany={9} />
 
       <div className="mb-8 flex justify-center">
         <motion.div

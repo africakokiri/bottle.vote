@@ -1,10 +1,7 @@
 import { Search } from "@/components/Search";
 import { SelectAndFilter } from "@/components/SelectAndFilter";
-import { getAllPosts } from "@/database/get";
 
-export default async function page() {
-  const allPosts = await getAllPosts();
-
+export default function page() {
   return (
     <div className="container max-w-7xl space-y-4">
       <div>
