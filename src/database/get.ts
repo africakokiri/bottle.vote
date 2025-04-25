@@ -19,6 +19,21 @@ export const getAllVotesByDesc = async () => {
   return allPosts;
 };
 
+// 모든 투표를 날짜 오름차순으로 불러온다.
+export const getAllVotesByAsc = async () => {
+  const allPosts = await prisma.votes.findMany({
+    include: {
+      users: true,
+      vote_options: true
+    },
+    orderBy: {
+      created_at: "asc"
+    }
+  });
+
+  return allPosts;
+};
+
 // 인기 있는 포스트 순서대로 투표를 불러온다.
 export const getPopularVotes = async (howMany?: number) => {
   const popularVotes = await prisma.votes.findMany({
