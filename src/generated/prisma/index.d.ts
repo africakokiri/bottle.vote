@@ -2174,19 +2174,19 @@ export namespace Prisma {
   }
 
   export type Vote_optionsSumAggregateOutputType = {
-    id: bigint | null
-    vote_id: bigint | null
+    id: number | null
+    vote_id: number | null
   }
 
   export type Vote_optionsMinAggregateOutputType = {
-    id: bigint | null
-    vote_id: bigint | null
+    id: number | null
+    vote_id: number | null
     name: string | null
   }
 
   export type Vote_optionsMaxAggregateOutputType = {
-    id: bigint | null
-    vote_id: bigint | null
+    id: number | null
+    vote_id: number | null
     name: string | null
   }
 
@@ -2314,8 +2314,8 @@ export namespace Prisma {
   }
 
   export type Vote_optionsGroupByOutputType = {
-    id: bigint
-    vote_id: bigint | null
+    id: number
+    vote_id: number | null
     name: string
     _count: Vote_optionsCountAggregateOutputType | null
     _avg: Vote_optionsAvgAggregateOutputType | null
@@ -2382,8 +2382,8 @@ export namespace Prisma {
       vote: Prisma.$votesPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: bigint
-      vote_id: bigint | null
+      id: number
+      vote_id: number | null
       name: string
     }, ExtArgs["result"]["vote_options"]>
     composites: {}
@@ -2809,8 +2809,8 @@ export namespace Prisma {
    * Fields of the vote_options model
    */
   interface vote_optionsFieldRefs {
-    readonly id: FieldRef<"vote_options", 'BigInt'>
-    readonly vote_id: FieldRef<"vote_options", 'BigInt'>
+    readonly id: FieldRef<"vote_options", 'Int'>
+    readonly vote_id: FieldRef<"vote_options", 'Int'>
     readonly name: FieldRef<"vote_options", 'String'>
   }
     
@@ -3263,12 +3263,12 @@ export namespace Prisma {
   }
 
   export type VotesSumAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     vote_count: number | null
   }
 
   export type VotesMinAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     title: string | null
     description: string | null
     category: string | null
@@ -3279,7 +3279,7 @@ export namespace Prisma {
   }
 
   export type VotesMaxAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     title: string | null
     description: string | null
     category: string | null
@@ -3433,14 +3433,14 @@ export namespace Prisma {
   }
 
   export type VotesGroupByOutputType = {
-    id: bigint
+    id: number
     title: string
     description: string | null
     category: string | null
     vote_count: number | null
     created_by: string | null
-    created_at: Date | null
-    expires_at: Date | null
+    created_at: Date
+    expires_at: Date
     _count: VotesCountAggregateOutputType | null
     _avg: VotesAvgAggregateOutputType | null
     _sum: VotesSumAggregateOutputType | null
@@ -3531,14 +3531,14 @@ export namespace Prisma {
       users: Prisma.$usersPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: bigint
+      id: number
       title: string
       description: string | null
       category: string | null
       vote_count: number | null
       created_by: string | null
-      created_at: Date | null
-      expires_at: Date | null
+      created_at: Date
+      expires_at: Date
     }, ExtArgs["result"]["votes"]>
     composites: {}
   }
@@ -3964,7 +3964,7 @@ export namespace Prisma {
    * Fields of the votes model
    */
   interface votesFieldRefs {
-    readonly id: FieldRef<"votes", 'BigInt'>
+    readonly id: FieldRef<"votes", 'Int'>
     readonly title: FieldRef<"votes", 'String'>
     readonly description: FieldRef<"votes", 'String'>
     readonly category: FieldRef<"votes", 'String'>
@@ -4519,20 +4519,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'BigInt'
-   */
-  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
-    
-
-
-  /**
-   * Reference to a field of type 'BigInt[]'
-   */
-  export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -4626,8 +4612,8 @@ export namespace Prisma {
     AND?: vote_optionsWhereInput | vote_optionsWhereInput[]
     OR?: vote_optionsWhereInput[]
     NOT?: vote_optionsWhereInput | vote_optionsWhereInput[]
-    id?: BigIntFilter<"vote_options"> | bigint | number
-    vote_id?: BigIntNullableFilter<"vote_options"> | bigint | number | null
+    id?: IntFilter<"vote_options"> | number
+    vote_id?: IntNullableFilter<"vote_options"> | number | null
     name?: StringFilter<"vote_options"> | string
     vote?: XOR<VotesNullableScalarRelationFilter, votesWhereInput> | null
   }
@@ -4640,11 +4626,11 @@ export namespace Prisma {
   }
 
   export type vote_optionsWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: number
     AND?: vote_optionsWhereInput | vote_optionsWhereInput[]
     OR?: vote_optionsWhereInput[]
     NOT?: vote_optionsWhereInput | vote_optionsWhereInput[]
-    vote_id?: BigIntNullableFilter<"vote_options"> | bigint | number | null
+    vote_id?: IntNullableFilter<"vote_options"> | number | null
     name?: StringFilter<"vote_options"> | string
     vote?: XOR<VotesNullableScalarRelationFilter, votesWhereInput> | null
   }, "id">
@@ -4664,8 +4650,8 @@ export namespace Prisma {
     AND?: vote_optionsScalarWhereWithAggregatesInput | vote_optionsScalarWhereWithAggregatesInput[]
     OR?: vote_optionsScalarWhereWithAggregatesInput[]
     NOT?: vote_optionsScalarWhereWithAggregatesInput | vote_optionsScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"vote_options"> | bigint | number
-    vote_id?: BigIntNullableWithAggregatesFilter<"vote_options"> | bigint | number | null
+    id?: IntWithAggregatesFilter<"vote_options"> | number
+    vote_id?: IntNullableWithAggregatesFilter<"vote_options"> | number | null
     name?: StringWithAggregatesFilter<"vote_options"> | string
   }
 
@@ -4673,14 +4659,14 @@ export namespace Prisma {
     AND?: votesWhereInput | votesWhereInput[]
     OR?: votesWhereInput[]
     NOT?: votesWhereInput | votesWhereInput[]
-    id?: BigIntFilter<"votes"> | bigint | number
+    id?: IntFilter<"votes"> | number
     title?: StringFilter<"votes"> | string
     description?: StringNullableFilter<"votes"> | string | null
     category?: StringNullableFilter<"votes"> | string | null
     vote_count?: IntNullableFilter<"votes"> | number | null
     created_by?: UuidNullableFilter<"votes"> | string | null
-    created_at?: DateTimeNullableFilter<"votes"> | Date | string | null
-    expires_at?: DateTimeNullableFilter<"votes"> | Date | string | null
+    created_at?: DateTimeFilter<"votes"> | Date | string
+    expires_at?: DateTimeFilter<"votes"> | Date | string
     vote_options?: Vote_optionsListRelationFilter
     users?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
   }
@@ -4692,14 +4678,14 @@ export namespace Prisma {
     category?: SortOrderInput | SortOrder
     vote_count?: SortOrderInput | SortOrder
     created_by?: SortOrderInput | SortOrder
-    created_at?: SortOrderInput | SortOrder
-    expires_at?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    expires_at?: SortOrder
     vote_options?: vote_optionsOrderByRelationAggregateInput
     users?: usersOrderByWithRelationInput
   }
 
   export type votesWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: number
     AND?: votesWhereInput | votesWhereInput[]
     OR?: votesWhereInput[]
     NOT?: votesWhereInput | votesWhereInput[]
@@ -4708,8 +4694,8 @@ export namespace Prisma {
     category?: StringNullableFilter<"votes"> | string | null
     vote_count?: IntNullableFilter<"votes"> | number | null
     created_by?: UuidNullableFilter<"votes"> | string | null
-    created_at?: DateTimeNullableFilter<"votes"> | Date | string | null
-    expires_at?: DateTimeNullableFilter<"votes"> | Date | string | null
+    created_at?: DateTimeFilter<"votes"> | Date | string
+    expires_at?: DateTimeFilter<"votes"> | Date | string
     vote_options?: Vote_optionsListRelationFilter
     users?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
   }, "id">
@@ -4721,8 +4707,8 @@ export namespace Prisma {
     category?: SortOrderInput | SortOrder
     vote_count?: SortOrderInput | SortOrder
     created_by?: SortOrderInput | SortOrder
-    created_at?: SortOrderInput | SortOrder
-    expires_at?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    expires_at?: SortOrder
     _count?: votesCountOrderByAggregateInput
     _avg?: votesAvgOrderByAggregateInput
     _max?: votesMaxOrderByAggregateInput
@@ -4734,14 +4720,14 @@ export namespace Prisma {
     AND?: votesScalarWhereWithAggregatesInput | votesScalarWhereWithAggregatesInput[]
     OR?: votesScalarWhereWithAggregatesInput[]
     NOT?: votesScalarWhereWithAggregatesInput | votesScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"votes"> | bigint | number
+    id?: IntWithAggregatesFilter<"votes"> | number
     title?: StringWithAggregatesFilter<"votes"> | string
     description?: StringNullableWithAggregatesFilter<"votes"> | string | null
     category?: StringNullableWithAggregatesFilter<"votes"> | string | null
     vote_count?: IntNullableWithAggregatesFilter<"votes"> | number | null
     created_by?: UuidNullableWithAggregatesFilter<"votes"> | string | null
-    created_at?: DateTimeNullableWithAggregatesFilter<"votes"> | Date | string | null
-    expires_at?: DateTimeNullableWithAggregatesFilter<"votes"> | Date | string | null
+    created_at?: DateTimeWithAggregatesFilter<"votes"> | Date | string
+    expires_at?: DateTimeWithAggregatesFilter<"votes"> | Date | string
   }
 
   export type usersCreateInput = {
@@ -4791,124 +4777,118 @@ export namespace Prisma {
   }
 
   export type vote_optionsCreateInput = {
-    id?: bigint | number
     name: string
     vote?: votesCreateNestedOneWithoutVote_optionsInput
   }
 
   export type vote_optionsUncheckedCreateInput = {
-    id?: bigint | number
-    vote_id?: bigint | number | null
+    id?: number
+    vote_id?: number | null
     name: string
   }
 
   export type vote_optionsUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     name?: StringFieldUpdateOperationsInput | string
     vote?: votesUpdateOneWithoutVote_optionsNestedInput
   }
 
   export type vote_optionsUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    vote_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id?: IntFieldUpdateOperationsInput | number
+    vote_id?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
   }
 
   export type vote_optionsCreateManyInput = {
-    id?: bigint | number
-    vote_id?: bigint | number | null
+    id?: number
+    vote_id?: number | null
     name: string
   }
 
   export type vote_optionsUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     name?: StringFieldUpdateOperationsInput | string
   }
 
   export type vote_optionsUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    vote_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    id?: IntFieldUpdateOperationsInput | number
+    vote_id?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
   }
 
   export type votesCreateInput = {
-    id?: bigint | number
     title: string
     description?: string | null
     category?: string | null
     vote_count?: number | null
-    created_at?: Date | string | null
-    expires_at?: Date | string | null
+    created_at?: Date | string
+    expires_at: Date | string
     vote_options?: vote_optionsCreateNestedManyWithoutVoteInput
     users?: usersCreateNestedOneWithoutCreatedVotesInput
   }
 
   export type votesUncheckedCreateInput = {
-    id?: bigint | number
+    id?: number
     title: string
     description?: string | null
     category?: string | null
     vote_count?: number | null
     created_by?: string | null
-    created_at?: Date | string | null
-    expires_at?: Date | string | null
+    created_at?: Date | string
+    expires_at: Date | string
     vote_options?: vote_optionsUncheckedCreateNestedManyWithoutVoteInput
   }
 
   export type votesUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     category?: NullableStringFieldUpdateOperationsInput | string | null
     vote_count?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
     vote_options?: vote_optionsUpdateManyWithoutVoteNestedInput
     users?: usersUpdateOneWithoutCreatedVotesNestedInput
   }
 
   export type votesUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     category?: NullableStringFieldUpdateOperationsInput | string | null
     vote_count?: NullableIntFieldUpdateOperationsInput | number | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
     vote_options?: vote_optionsUncheckedUpdateManyWithoutVoteNestedInput
   }
 
   export type votesCreateManyInput = {
-    id?: bigint | number
+    id?: number
     title: string
     description?: string | null
     category?: string | null
     vote_count?: number | null
     created_by?: string | null
-    created_at?: Date | string | null
-    expires_at?: Date | string | null
+    created_at?: Date | string
+    expires_at: Date | string
   }
 
   export type votesUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     category?: NullableStringFieldUpdateOperationsInput | string | null
     vote_count?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type votesUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     category?: NullableStringFieldUpdateOperationsInput | string | null
     vote_count?: NullableIntFieldUpdateOperationsInput | number | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UuidFilter<$PrismaModel = never> = {
@@ -5004,26 +4984,26 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type BigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type BigIntNullableFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -5074,36 +5054,36 @@ export namespace Prisma {
     vote_id?: SortOrder
   }
 
-  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
     _count?: NestedIntFilter<$PrismaModel>
     _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type BigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedBigIntNullableFilter<$PrismaModel>
-    _min?: NestedBigIntNullableFilter<$PrismaModel>
-    _max?: NestedBigIntNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -5124,17 +5104,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type UuidNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -5147,15 +5116,15 @@ export namespace Prisma {
     not?: NestedUuidNullableFilter<$PrismaModel> | string | null
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type Vote_optionsListRelationFilter = {
@@ -5216,22 +5185,6 @@ export namespace Prisma {
     vote_count?: SortOrder
   }
 
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
   export type UuidNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -5247,18 +5200,18 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type votesCreateNestedManyWithoutUsersInput = {
@@ -5317,14 +5270,6 @@ export namespace Prisma {
     connect?: votesWhereUniqueInput
   }
 
-  export type BigIntFieldUpdateOperationsInput = {
-    set?: bigint | number
-    increment?: bigint | number
-    decrement?: bigint | number
-    multiply?: bigint | number
-    divide?: bigint | number
-  }
-
   export type votesUpdateOneWithoutVote_optionsNestedInput = {
     create?: XOR<votesCreateWithoutVote_optionsInput, votesUncheckedCreateWithoutVote_optionsInput>
     connectOrCreate?: votesCreateOrConnectWithoutVote_optionsInput
@@ -5335,12 +5280,20 @@ export namespace Prisma {
     update?: XOR<XOR<votesUpdateToOneWithWhereWithoutVote_optionsInput, votesUpdateWithoutVote_optionsInput>, votesUncheckedUpdateWithoutVote_optionsInput>
   }
 
-  export type NullableBigIntFieldUpdateOperationsInput = {
-    set?: bigint | number | null
-    increment?: bigint | number
-    decrement?: bigint | number
-    multiply?: bigint | number
-    divide?: bigint | number
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type vote_optionsCreateNestedManyWithoutVoteInput = {
@@ -5363,16 +5316,8 @@ export namespace Prisma {
     connect?: vote_optionsWhereUniqueInput | vote_optionsWhereUniqueInput[]
   }
 
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type vote_optionsUpdateManyWithoutVoteNestedInput = {
@@ -5505,42 +5450,20 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedBigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
-  }
-
-  export type NestedBigIntNullableFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
-  }
-
-  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
     _count?: NestedIntFilter<$PrismaModel>
     _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type NestedFloatFilter<$PrismaModel = never> = {
@@ -5554,20 +5477,20 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedBigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedBigIntNullableFilter<$PrismaModel>
-    _min?: NestedBigIntNullableFilter<$PrismaModel>
-    _max?: NestedBigIntNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
@@ -5609,31 +5532,15 @@ export namespace Prisma {
     not?: NestedUuidNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedUuidNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -5650,39 +5557,38 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type votesCreateWithoutUsersInput = {
-    id?: bigint | number
     title: string
     description?: string | null
     category?: string | null
     vote_count?: number | null
-    created_at?: Date | string | null
-    expires_at?: Date | string | null
+    created_at?: Date | string
+    expires_at: Date | string
     vote_options?: vote_optionsCreateNestedManyWithoutVoteInput
   }
 
   export type votesUncheckedCreateWithoutUsersInput = {
-    id?: bigint | number
+    id?: number
     title: string
     description?: string | null
     category?: string | null
     vote_count?: number | null
-    created_at?: Date | string | null
-    expires_at?: Date | string | null
+    created_at?: Date | string
+    expires_at: Date | string
     vote_options?: vote_optionsUncheckedCreateNestedManyWithoutVoteInput
   }
 
@@ -5716,36 +5622,35 @@ export namespace Prisma {
     AND?: votesScalarWhereInput | votesScalarWhereInput[]
     OR?: votesScalarWhereInput[]
     NOT?: votesScalarWhereInput | votesScalarWhereInput[]
-    id?: BigIntFilter<"votes"> | bigint | number
+    id?: IntFilter<"votes"> | number
     title?: StringFilter<"votes"> | string
     description?: StringNullableFilter<"votes"> | string | null
     category?: StringNullableFilter<"votes"> | string | null
     vote_count?: IntNullableFilter<"votes"> | number | null
     created_by?: UuidNullableFilter<"votes"> | string | null
-    created_at?: DateTimeNullableFilter<"votes"> | Date | string | null
-    expires_at?: DateTimeNullableFilter<"votes"> | Date | string | null
+    created_at?: DateTimeFilter<"votes"> | Date | string
+    expires_at?: DateTimeFilter<"votes"> | Date | string
   }
 
   export type votesCreateWithoutVote_optionsInput = {
-    id?: bigint | number
     title: string
     description?: string | null
     category?: string | null
     vote_count?: number | null
-    created_at?: Date | string | null
-    expires_at?: Date | string | null
+    created_at?: Date | string
+    expires_at: Date | string
     users?: usersCreateNestedOneWithoutCreatedVotesInput
   }
 
   export type votesUncheckedCreateWithoutVote_optionsInput = {
-    id?: bigint | number
+    id?: number
     title: string
     description?: string | null
     category?: string | null
     vote_count?: number | null
     created_by?: string | null
-    created_at?: Date | string | null
-    expires_at?: Date | string | null
+    created_at?: Date | string
+    expires_at: Date | string
   }
 
   export type votesCreateOrConnectWithoutVote_optionsInput = {
@@ -5765,34 +5670,32 @@ export namespace Prisma {
   }
 
   export type votesUpdateWithoutVote_optionsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     category?: NullableStringFieldUpdateOperationsInput | string | null
     vote_count?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: usersUpdateOneWithoutCreatedVotesNestedInput
   }
 
   export type votesUncheckedUpdateWithoutVote_optionsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     category?: NullableStringFieldUpdateOperationsInput | string | null
     vote_count?: NullableIntFieldUpdateOperationsInput | number | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type vote_optionsCreateWithoutVoteInput = {
-    id?: bigint | number
     name: string
   }
 
   export type vote_optionsUncheckedCreateWithoutVoteInput = {
-    id?: bigint | number
+    id?: number
     name: string
   }
 
@@ -5843,8 +5746,8 @@ export namespace Prisma {
     AND?: vote_optionsScalarWhereInput | vote_optionsScalarWhereInput[]
     OR?: vote_optionsScalarWhereInput[]
     NOT?: vote_optionsScalarWhereInput | vote_optionsScalarWhereInput[]
-    id?: BigIntFilter<"vote_options"> | bigint | number
-    vote_id?: BigIntNullableFilter<"vote_options"> | bigint | number | null
+    id?: IntFilter<"vote_options"> | number
+    vote_id?: IntNullableFilter<"vote_options"> | number | null
     name?: StringFilter<"vote_options"> | string
   }
 
@@ -5872,64 +5775,62 @@ export namespace Prisma {
   }
 
   export type votesCreateManyUsersInput = {
-    id?: bigint | number
+    id?: number
     title: string
     description?: string | null
     category?: string | null
     vote_count?: number | null
-    created_at?: Date | string | null
-    expires_at?: Date | string | null
+    created_at?: Date | string
+    expires_at: Date | string
   }
 
   export type votesUpdateWithoutUsersInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     category?: NullableStringFieldUpdateOperationsInput | string | null
     vote_count?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
     vote_options?: vote_optionsUpdateManyWithoutVoteNestedInput
   }
 
   export type votesUncheckedUpdateWithoutUsersInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     category?: NullableStringFieldUpdateOperationsInput | string | null
     vote_count?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
     vote_options?: vote_optionsUncheckedUpdateManyWithoutVoteNestedInput
   }
 
   export type votesUncheckedUpdateManyWithoutUsersInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     category?: NullableStringFieldUpdateOperationsInput | string | null
     vote_count?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type vote_optionsCreateManyVoteInput = {
-    id?: bigint | number
+    id?: number
     name: string
   }
 
   export type vote_optionsUpdateWithoutVoteInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
     name?: StringFieldUpdateOperationsInput | string
   }
 
   export type vote_optionsUncheckedUpdateWithoutVoteInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
   }
 
   export type vote_optionsUncheckedUpdateManyWithoutVoteInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
   }
 
