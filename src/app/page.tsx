@@ -1,4 +1,4 @@
-import { PopularVotes } from "@/components/PopularVotes";
+import { PopularVotes } from "@/components/MainPagePopularVotes";
 import { LinkButton } from "@/components/ui/LinkButton";
 
 import * as motion from "motion/react-client";
