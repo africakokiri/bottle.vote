@@ -50,7 +50,6 @@ export const getAllPopularVotes = async (howMany?: number) => {
   return popularVotes;
 };
 
-// 모든 투표의 개수를 불러온다.
 export const getVotesLength = async () => {
   const result = await prisma.$queryRaw<
     {
@@ -66,5 +65,8 @@ export const getVotesLength = async () => {
 
   const { allVotesLength, activeVotesLength } = result[0];
 
-  return { allVotesLength, activeVotesLength };
+  return {
+    allVotesLength: BigInt(allVotesLength),
+    activeVotesLength: BigInt(activeVotesLength)
+  };
 };
