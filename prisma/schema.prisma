@@ -10,10 +10,11 @@ datasource db {
 }
 
 model users {
-  id           String  @id @db.Uuid
-  name         String?
-  avatar       String?
-  createdVotes votes[] @relation("UserCreatedVotes")
+  id            String  @id @db.Uuid
+  email         String  @unique(map: "users_name_key")
+  nickname      String  @unique(map: "users_avatar_key")
+  profile_image String?
+  createdVotes  votes[] @relation("UserCreatedVotes")
 }
 
 model vote_options {

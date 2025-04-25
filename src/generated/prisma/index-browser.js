@@ -119,8 +119,9 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.UsersScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  avatar: 'avatar'
+  email: 'email',
+  nickname: 'nickname',
+  profile_image: 'profile_image'
 };
 
 exports.Prisma.Vote_optionsScalarFieldEnum = {
