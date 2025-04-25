@@ -4,6 +4,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+// 모든 투표를 불러온다.
 export const getAllVotes = async () => {
   const allPosts = await prisma.votes.findMany({
     include: {
@@ -15,6 +16,7 @@ export const getAllVotes = async () => {
   return allPosts;
 };
 
+// 인기 있는 포스트 순서대로 투표를 불러온다.
 export const getPopularVotes = async (howMany?: number) => {
   const popularVotes = await prisma.votes.findMany({
     include: {
@@ -30,6 +32,7 @@ export const getPopularVotes = async (howMany?: number) => {
   return popularVotes;
 };
 
+// 모든 투표의 개수를 불러온다.
 export const getVotesLength = async () => {
   const result = await prisma.$queryRaw<
     {
