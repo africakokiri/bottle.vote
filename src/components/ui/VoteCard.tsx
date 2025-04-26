@@ -34,7 +34,7 @@ hover:shadow-xl`}
                 className="bg-background dark:text-foreground w-fit rounded-full border px-2 py-0.5
 text-xs text-[10px] font-semibold text-neutral-700"
               >
-                {vote.category}
+                {vote.category_name}
               </div>
               <p className="text-xs font-bold text-red-500">{vote.vote_count}명 투표</p>
             </div>
