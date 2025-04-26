@@ -1,6 +1,7 @@
 import { type DateSortSelect } from "@/components/SelectAndFilter";
 
 import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 interface DatetSortSelect {
   dateSelect: DateSortSelect;
@@ -9,11 +10,19 @@ interface DatetSortSelect {
 }
 
 // 투표 정렬 방식
-export const useDatetSortSelectStore = create<DatetSortSelect>((set) => ({
-  dateSelect: "latest",
+export const useDatetSortSelectStore = create<DatetSortSelect>()(
+  persist(
+    (set) => ({
+      dateSelect: "latest",
 
-  setDateSortSelect: (dateSelect: DateSortSelect) =>
-    set(() => ({
-      dateSelect: dateSelect
-    }))
-}));
+      setDateSortSelect: (dateSelect: DateSortSelect) =>
+        set(() => ({
+          dateSelect: dateSelect
+        }))
+    }),
+    {
+      name: "date-sort",
+      storage: createJSONStorage(() => sessionStorage)
+    }
+  )
+);
