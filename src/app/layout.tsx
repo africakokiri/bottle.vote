@@ -34,7 +34,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Header />
-            <div className="pt-16">{children}</div>
+            <div className="py-16">{children}</div>
           </ThemeProvider>
         </TanstackQueryWrapper>
       </body>

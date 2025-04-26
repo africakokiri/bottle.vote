@@ -46,7 +46,7 @@ rounded-2xl border px-8 py-12"
       {/* 인기 투표 */}
       <PopularVotes howMany={9} />
 
-      <div className="mb-8 flex justify-center">
+      <div className="flex justify-center">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
