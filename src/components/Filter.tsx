@@ -35,45 +35,41 @@ export const Filter = () => {
             </header>
           }
           body={
-            <>
+            <div className="space-y-2">
               <h3>카테고리</h3>
               <div className="flex justify-between">
-                <ul className="w-1/2 space-y-2">
+                <ul className="w-1/2">
                   {left.map(({ id, name }) => {
                     return (
-                      <li
-                        key={id}
-                        className="space-x-2"
-                      >
-                        <input
-                          id={id}
-                          type="checkbox"
-                          className="h-4 w-4 accent-black"
-                        />
-                        <label htmlFor={id}>{name}</label>
+                      <li key={id}>
+                        <label className="flex max-w-fit items-center gap-2 py-1.5">
+                          <input
+                            type="checkbox"
+                            className="h-4 w-4"
+                          />
+                          <p>{name}</p>
+                        </label>
                       </li>
                     );
                   })}
                 </ul>
-                <ul className="w-1/2 space-y-2">
+                <ul className="w-1/2">
                   {right.map(({ id, name }) => {
                     return (
-                      <li
-                        key={id}
-                        className="space-x-2"
-                      >
-                        <input
-                          id={id}
-                          type="checkbox"
-                          className="h-4 w-4 accent-black"
-                        />
-                        <label htmlFor={id}>{name}</label>
+                      <li key={id}>
+                        <label className="flex max-w-fit items-center gap-2 py-1.5">
+                          <input
+                            type="checkbox"
+                            className="h-4 w-4"
+                          />
+                          <p>{name}</p>
+                        </label>
                       </li>
                     );
                   })}
                 </ul>
               </div>
-            </>
+            </div>
           }
           footer={
             <footer className="flex flex-col gap-2 pt-4">
