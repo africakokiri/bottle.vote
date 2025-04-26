@@ -71,19 +71,19 @@ export const useFilterStore = create<FilterStore>()(
 
 // 투표 검색
 interface SearchStore {
-  input: string;
+  search: string;
 
-  setInput: (input: string) => void;
+  setSearch: (search: string) => void;
 }
 
 export const useSearchStore = create<SearchStore>()(
   persist(
     (set) => ({
-      input: "",
+      search: "",
 
-      setInput: (input: string) =>
+      setSearch: (search: string) =>
         set(() => ({
-          input
+          search: search.trim().replaceAll(" ", "")
         }))
     }),
     {
