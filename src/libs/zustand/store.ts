@@ -83,7 +83,10 @@ export const useSearchStore = create<SearchStore>()(
 
       setSearch: (search: string) =>
         set(() => ({
-          search: search.trim().replaceAll(" ", "")
+          search: search
+            .trim()
+            .replaceAll(" ", "")
+            .replace(/[^\p{L}\p{N}\s]/gu, "")
         }))
     }),
     {
