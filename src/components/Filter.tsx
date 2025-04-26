@@ -11,7 +11,7 @@ import { useState } from "react";
 export const Filter = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { filter, setFilter, selectAllFilter, resetFilter } = useFilterStore();
+  const { filter, setFilter, selectAllFilter, resetFilter, applyFilter } = useFilterStore();
 
   const left = categories.slice(0, categories.length / 2);
   const right = categories.slice(categories.length / 2);
@@ -82,7 +82,10 @@ export const Filter = () => {
             <footer className="flex flex-col gap-2 pt-4">
               <Button
                 className="gradient-bg"
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  setIsOpen(false);
+                  applyFilter();
+                }}
               >
                 적용하기
               </Button>
