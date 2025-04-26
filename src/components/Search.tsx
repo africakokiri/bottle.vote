@@ -12,10 +12,10 @@ export const Search = () => {
   const { register, handleSubmit } = useForm<{ search: string }>();
 
   const { data, isError, isLoading } = useGetVotesLength();
-  const { setInput } = useSearchStore();
+  const { setSearch } = useSearchStore();
 
   const onSubmit: SubmitHandler<{ search: string }> = (data) => {
-    setInput(data.search);
+    setSearch(data.search);
   };
 
   if (isError) throw new Error("Error: Search 컴포넌트");
