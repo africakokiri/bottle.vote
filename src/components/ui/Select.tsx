@@ -1,6 +1,7 @@
 "use client";
 
 import { type DateSortSelect } from "@/components/SelectAndFilter";
+import { useDatetSortSelectStore } from "@/libs/zustand/store";
 
 import { ChevronDownIcon } from "lucide-react";
 import { motion } from "motion/react";
@@ -16,15 +17,18 @@ type SelectProps = {
 };
 
 export const Select = ({ options, width, onValueChange }: SelectProps) => {
+  const dateSelect = useDatetSortSelectStore((state) => state.dateSelect);
+
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(options[0]);
+  const [selectedOption, setSelectedOption] = useState(() => {
+    return options.find((o) => o.value === dateSelect) ?? options[0];
+  });
+
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     onValueChange(selectedOption.value);
-
-    // eslint-disable-next-line
-  }, [selectedOption]);
+  }, [selectedOption, onValueChange]);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
