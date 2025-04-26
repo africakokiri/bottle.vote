@@ -58,7 +58,7 @@ text-xs text-[10px] font-semibold text-neutral-700"
         </div>
 
         <div className="flex min-w-[40%] flex-col justify-center border-l p-3">
-          {vote.vote_options.slice(0, 4).map((option, index) => (
+          {vote.vote_options.slice(0, 2).map((option, index) => (
             <div
               key={index}
               className="relative mb-1.5 pt-1"
