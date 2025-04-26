@@ -68,3 +68,27 @@ export const useFilterStore = create<FilterStore>()(
     }
   )
 );
+
+// 투표 검색
+interface SearchStore {
+  input: string;
+
+  setInput: (input: string) => void;
+}
+
+export const useSearchStore = create<SearchStore>()(
+  persist(
+    (set) => ({
+      input: "",
+
+      setInput: (input: string) =>
+        set(() => ({
+          input
+        }))
+    }),
+    {
+      name: "search",
+      storage: createJSONStorage(() => sessionStorage)
+    }
+  )
+);
