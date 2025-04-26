@@ -9,7 +9,7 @@ export default function page() {
         <h1 className="text-3xl font-bold">투표 목록</h1>
       </div>
 
-      <div className="spcae-y-8">
+      <div className="flex flex-col gap-4 sm:gap-0">
         <div className="gap-4 space-y-4 sm:flex">
           {/* 검색  */}
           <Search />
