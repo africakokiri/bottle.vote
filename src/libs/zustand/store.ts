@@ -31,16 +31,19 @@ export const useDatetSortSelectStore = create<DatetSortSelect>()(
 // 투표 필터
 interface FilterStore {
   filter: CategoriesValue[];
+  filterApplied: boolean;
 
   setFilter: (value: CategoriesValue, checked: boolean) => void;
   selectAllFilter: () => void;
   resetFilter: () => void;
+  applyFilter: () => void;
 }
 
 export const useFilterStore = create<FilterStore>()(
   persist(
     (set) => ({
       filter: categories.map((category) => category.value),
+      filterApplied: false,
 
       setFilter: (value, checked) =>
         set((state) => ({
@@ -53,6 +56,10 @@ export const useFilterStore = create<FilterStore>()(
       resetFilter: () =>
         set(() => ({
           filter: []
+        })),
+      applyFilter: () =>
+        set((state) => ({
+          filterApplied: !state.filterApplied
         }))
     }),
     {
