@@ -39,9 +39,9 @@ export const Filter = () => {
               <h3>카테고리</h3>
               <div className="flex justify-between">
                 <ul className="w-1/2">
-                  {left.map(({ id, name }) => {
+                  {left.map(({ value, name }) => {
                     return (
-                      <li key={id}>
+                      <li key={value}>
                         <label className="flex max-w-fit items-center gap-2 py-1.5">
                           <input
                             type="checkbox"
@@ -54,9 +54,9 @@ export const Filter = () => {
                   })}
                 </ul>
                 <ul className="w-1/2">
-                  {right.map(({ id, name }) => {
+                  {right.map(({ value, name }) => {
                     return (
-                      <li key={id}>
+                      <li key={value}>
                         <label className="flex max-w-fit items-center gap-2 py-1.5">
                           <input
                             type="checkbox"
