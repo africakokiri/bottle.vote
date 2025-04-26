@@ -76,22 +76,11 @@ interface SearchStore {
   setSearch: (search: string) => void;
 }
 
-export const useSearchStore = create<SearchStore>()(
-  persist(
-    (set) => ({
-      search: "",
+export const useSearchStore = create<SearchStore>()((set) => ({
+  search: "",
 
-      setSearch: (search: string) =>
-        set(() => ({
-          search: search
-            .trim()
-            .replaceAll(" ", "")
-            .replace(/[^\p{L}\p{N}\s]/gu, "")
-        }))
-    }),
-    {
-      name: "search",
-      storage: createJSONStorage(() => sessionStorage)
-    }
-  )
-);
+  setSearch: (search: string) =>
+    set(() => ({
+      search
+    }))
+}));
