@@ -3,11 +3,20 @@
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useGetVotesLength } from "@/hooks/useGetVotes";
+import { useSearchStore } from "@/libs/zustand/store";
 
 import { SearchIcon } from "lucide-react";
+import { type SubmitHandler, useForm } from "react-hook-form";
 
 export const Search = () => {
+  const { register, handleSubmit } = useForm<{ search: string }>();
+
   const { data, isError, isLoading } = useGetVotesLength();
+  const { setInput } = useSearchStore();
+
+  const onSubmit: SubmitHandler<{ search: string }> = (data) => {
+    setInput(data.search);
+  };
 
   if (isError) throw new Error("Error: Search 컴포넌트");
 
@@ -21,10 +30,14 @@ export const Search = () => {
           </div>
         </div>
       ) : (
-        <form className="relative flex flex-1 items-center">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="relative flex flex-1 items-center"
+        >
           <Input
             placeholder={`총 ${data?.allVotesLength}개의 투표와 ${data?.activeVotesLength}개의 진행중인 투표`}
             className="bg-element w-full !p-2"
+            {...register("search", { required: true })}
           />
           <Button
             variant="icon"
