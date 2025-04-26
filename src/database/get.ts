@@ -79,6 +79,10 @@ export const getSearchedVotes = async (search: string) => {
 
   // Prisma로 투표를 가져오고 필터링
   const searchedVotes = await prisma.votes.findMany({
+    include: {
+      users: true,
+      vote_options: true
+    },
     where: {
       title: {
         // 모든 단어가 포함되도록 처리
