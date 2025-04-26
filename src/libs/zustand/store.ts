@@ -1,4 +1,5 @@
 import { type DateSortSelect } from "@/components/SelectAndFilter";
+import { type CategoriesValue, categories } from "@/const/const";
 
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
@@ -22,6 +23,40 @@ export const useDatetSortSelectStore = create<DatetSortSelect>()(
     }),
     {
       name: "date-sort",
+      storage: createJSONStorage(() => sessionStorage)
+    }
+  )
+);
+
+// 투표 필터
+interface FilterStore {
+  filter: CategoriesValue[];
+
+  setFilter: (value: CategoriesValue, checked: boolean) => void;
+  selectAllFilter: () => void;
+  resetFilter: () => void;
+}
+
+export const useFilterStore = create<FilterStore>()(
+  persist(
+    (set) => ({
+      filter: categories.map((category) => category.value),
+
+      setFilter: (value, checked) =>
+        set((state) => ({
+          filter: checked ? [...state.filter, value] : state.filter.filter((item) => item !== value)
+        })),
+      selectAllFilter: () =>
+        set(() => ({
+          filter: categories.map((category) => category.value)
+        })),
+      resetFilter: () =>
+        set(() => ({
+          filter: []
+        }))
+    }),
+    {
+      name: "filter",
       storage: createJSONStorage(() => sessionStorage)
     }
   )
