@@ -70,3 +70,23 @@ export const getVotesLength = async () => {
     activeVotesLength: BigInt(activeVotesLength)
   };
 };
+
+// 투표를 검색한다.
+export const getSearchedVotes = async (search: string) => {
+  const searchTerms = search.trim().split(/\s+/);
+
+  console.log(searchTerms);
+
+  // Prisma로 투표를 가져오고 필터링
+  const searchedVotes = await prisma.votes.findMany({
+    where: {
+      title: {
+        // 모든 단어가 포함되도록 처리
+        contains: searchTerms.join(" "),
+        mode: "insensitive"
+      }
+    }
+  });
+
+  return searchedVotes;
+};
