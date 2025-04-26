@@ -1,6 +1,12 @@
 "use client";
 
-import { getAllPopularVotes, getAllVotesByAsc, getAllVotesByDesc, getVotesLength } from "@/database/get";
+import {
+  getAllPopularVotes,
+  getAllVotesByAsc,
+  getAllVotesByDesc,
+  getSearchedVotes,
+  getVotesLength
+} from "@/database/get";
 
 import { useQuery } from "@tanstack/react-query";
 
@@ -36,6 +42,15 @@ export const useGetVotesLength = () => {
   return useQuery({
     queryKey: ["votesLength"],
     queryFn: () => getVotesLength(),
+    refetchOnMount: false
+  });
+};
+
+// 검색된 투표들을 불러온다..
+export const useGetSearchedVotes = (search: string) => {
+  return useQuery({
+    queryKey: ["searchedVotes", search],
+    queryFn: () => getSearchedVotes(search),
     refetchOnMount: false
   });
 };
