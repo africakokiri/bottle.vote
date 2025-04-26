@@ -2,8 +2,9 @@
 
 import { VoteCard } from "@/components/ui/VoteCard";
 import { VoteCardSkeleton } from "@/components/ui/VoteCardSekeleton";
+import { type CategoriesValue } from "@/const/const";
 import { useGetAllVotesByAsc, useGetAllVotesByDesc, useGetPopularVotes } from "@/hooks/useGetVotes";
-import { useDatetSortSelectStore } from "@/libs/zustand/store";
+import { useDatetSortSelectStore, useFilterStore } from "@/libs/zustand/store";
 
 const useSortedVotes = () => {
   const { dateSelect } = useDatetSortSelectStore();
@@ -23,6 +24,7 @@ const useSortedVotes = () => {
 
 export const VoteListPageVotes = () => {
   const { votes, isLoading, isError } = useSortedVotes();
+  const { filter } = useFilterStore();
 
   if (isError) throw new Error("Error: VoteListPageVotes 컴포넌트");
 
@@ -33,12 +35,14 @@ export const VoteListPageVotes = () => {
       <div className="vote-grid grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {isLoading
           ? Array.from({ length: 15 }).map((_, idx) => <VoteCardSkeleton key={idx} />)
-          : votes.map((vote) => (
-              <VoteCard
-                key={vote.id}
-                vote={vote}
-              />
-            ))}
+          : votes
+              .filter((vote) => filter.includes(vote.category_value as CategoriesValue))
+              .map((vote) => (
+                <VoteCard
+                  key={vote.id}
+                  vote={vote}
+                />
+              ))}
       </div>
     </section>
   );
