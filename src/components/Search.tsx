@@ -15,7 +15,7 @@ export const Search = () => {
   const { setSearch } = useSearchStore();
 
   const onSubmit: SubmitHandler<{ search: string }> = (data) => {
-    setSearch(data.search);
+    if (data) setSearch(data.search);
   };
 
   if (isError) throw new Error("Error: Search 컴포넌트");
