@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
 import { categories } from "@/const/const";
+import { useFilterStore } from "@/libs/zustand/store";
 
 import { FilterIcon } from "lucide-react";
 import { useState } from "react";
@@ -10,8 +11,10 @@ import { useState } from "react";
 export const Filter = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const left = categories.slice(1, categories.length / 2 + 1);
-  const right = categories.slice(categories.length / 2 + 1);
+  const { filter, setFilter, selectAllFilter, resetFilter } = useFilterStore();
+
+  const left = categories.slice(0, categories.length / 2);
+  const right = categories.slice(categories.length / 2);
 
   return (
     <>
@@ -42,10 +45,12 @@ export const Filter = () => {
                   {left.map(({ value, name }) => {
                     return (
                       <li key={value}>
-                        <label className="flex max-w-fit items-center gap-2 py-1.5">
+                        <label className="flex max-w-fit items-center gap-2 py-1.5 pr-4">
                           <input
                             type="checkbox"
                             className="h-4 w-4"
+                            checked={filter.includes(value)}
+                            onChange={(e) => setFilter(value, e.target.checked)}
                           />
                           <p>{name}</p>
                         </label>
@@ -57,10 +62,12 @@ export const Filter = () => {
                   {right.map(({ value, name }) => {
                     return (
                       <li key={value}>
-                        <label className="flex max-w-fit items-center gap-2 py-1.5">
+                        <label className="flex max-w-fit items-center gap-2 py-1.5 pr-4">
                           <input
                             type="checkbox"
                             className="h-4 w-4"
+                            checked={filter.includes(value)}
+                            onChange={(e) => setFilter(value, e.target.checked)}
                           />
                           <p>{name}</p>
                         </label>
@@ -79,7 +86,20 @@ export const Filter = () => {
               >
                 적용하기
               </Button>
-              <Button className="bg-background border">필터 초기화</Button>
+              <div className="flex gap-2 *:flex-1">
+                <Button
+                  className="bg-element border"
+                  onClick={() => selectAllFilter()}
+                >
+                  모두 선택
+                </Button>
+                <Button
+                  className="bg-element border"
+                  onClick={() => resetFilter()}
+                >
+                  필터 초기화
+                </Button>
+              </div>
             </footer>
           }
         />
