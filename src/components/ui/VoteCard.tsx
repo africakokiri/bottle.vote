@@ -20,7 +20,7 @@ export const VoteCard = ({ vote, className }: VoteCardProps) => {
   return (
     <motion.div
       whileHover={{ y: -10 }}
-      className={`${className} bg-element h-[150px] space-y-4 rounded-xl border hover:border-fuchsia-500
+      className={`${className} bg-element h-[170px] space-y-4 rounded-xl border hover:border-fuchsia-500
 hover:shadow-xl`}
     >
       <Link
@@ -44,10 +44,10 @@ text-xs text-[10px] font-semibold text-neutral-700"
             </h3>
           </header>
 
-          <footer className="flex items-center justify-between py-0.5 pt-2 text-[10px]">
+          <footer className="space-y-2 py-0.5 pt-2 text-[10px]">
             <div className="flex items-center gap-2">
               <div className="min-h-4 min-w-4 rounded-full bg-neutral-500" />
-              <h4>{"asd"}</h4>
+              <h4>{vote.users.nickname}</h4>
             </div>
             <p>
               <span>{format(new Date(vote.created_at), "yyyy-MM-dd")}</span>
@@ -58,7 +58,7 @@ text-xs text-[10px] font-semibold text-neutral-700"
         </div>
 
         <div className="flex min-w-[40%] flex-col justify-center border-l p-3">
-          {vote.vote_options.slice(0, 2).map((option, index) => (
+          {vote.vote_options.slice(0, 4).map((option, index) => (
             <div
               key={index}
               className="relative mb-1.5 pt-1"
