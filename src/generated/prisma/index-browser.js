@@ -135,11 +135,12 @@ exports.Prisma.VotesScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
-  category: 'category',
+  category_name: 'category_name',
   vote_count: 'vote_count',
   created_by: 'created_by',
   created_at: 'created_at',
-  expires_at: 'expires_at'
+  expires_at: 'expires_at',
+  category_value: 'category_value'
 };
 
 exports.Prisma.SortOrder = {
