@@ -144,6 +144,22 @@ exports.Prisma.VotesScalarFieldEnum = {
   is_duplicate_vote: 'is_duplicate_vote'
 };
 
+exports.Prisma.Comment_likesScalarFieldEnum = {
+  id: 'id',
+  comment_id: 'comment_id',
+  user_id: 'user_id',
+  created_at: 'created_at'
+};
+
+exports.Prisma.CommentsScalarFieldEnum = {
+  id: 'id',
+  vote_id: 'vote_id',
+  user_id: 'user_id',
+  parent_id: 'parent_id',
+  content: 'content',
+  created_at: 'created_at'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -163,7 +179,9 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   users: 'users',
   vote_options: 'vote_options',
-  votes: 'votes'
+  votes: 'votes',
+  comment_likes: 'comment_likes',
+  comments: 'comments'
 };
 
 /**
