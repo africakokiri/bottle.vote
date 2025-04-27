@@ -36,7 +36,7 @@ text-[10px] font-semibold text-neutral-700"
               >
                 {vote.category_name}
               </div>
-              <p className="text-xs font-bold text-red-500">{vote.vote_count}명 투표</p>
+              <p className="text-xs font-bold text-red-500">{vote.vote_count.toLocaleString()}명 참여</p>
             </div>
             <h2 className="line-clamp-1 text-sm font-extrabold">{vote.title}</h2>
             <h3 className="dark:text-foreground line-clamp-2 text-xs text-neutral-700">
@@ -46,7 +46,7 @@ text-[10px] font-semibold text-neutral-700"
 
           <footer className="space-y-2 py-0.5 pt-2 text-[10px]">
             <div className="flex items-center gap-2">
-              <div className="min-h-4 min-w-4 rounded-full bg-neutral-500" />
+              <div className="min-h-4 min-w-4 rounded-full bg-neutral-300 dark:bg-neutral-500" />
               <h4>{vote.users.nickname}</h4>
             </div>
             <p>
