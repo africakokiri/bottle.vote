@@ -5,11 +5,11 @@ import { type ButtonHTMLAttributes } from "react";
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
   className?: string;
-  variant: "default" | "icon";
   ref?: React.Ref<HTMLButtonElement>;
+  variant?: "default" | "icon";
 };
 
-export const Button = ({ children, className, variant, ref, ...props }: ButtonProps) => {
+export const Button = ({ children, className, ref, variant, ...props }: ButtonProps) => {
   let buttonVariant;
 
   if (variant === "icon") buttonVariant = "p-3 border-none bg-transparent";
