@@ -4,6 +4,20 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+export const getVoteById = async (id: number) => {
+  const vote = await prisma.votes.findUnique({
+    include: {
+      users: true,
+      vote_options: true
+    },
+    where: {
+      id
+    }
+  });
+
+  return vote;
+};
+
 // 모든 투표를 날짜 내림차순으로 불러온다.
 export const getAllVotesByDesc = async () => {
   const allPosts = await prisma.votes.findMany({
@@ -50,6 +64,7 @@ export const getAllPopularVotes = async (howMany?: number) => {
   return popularVotes;
 };
 
+// 전체 포스트의 개수를 불러온다.
 export const getVotesLength = async () => {
   const result = await prisma.$queryRaw<
     {
