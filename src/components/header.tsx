@@ -26,7 +26,18 @@ export const Header = () => {
     <header className="bg-element/50 fixed top-0 left-0 w-full border-b backdrop-blur-md">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/">
-          <h1 className="text-gradient text-xl font-extrabold sm:text-2xl">bottle.vote</h1>
+          <div className="relative inline-block">
+            <h1 className="text-gradient relative z-10 text-xl font-extrabold sm:text-2xl">
+              bottle.vote
+            </h1>
+            <h1
+              className="text-gradient absolute inset-0 text-xl font-extrabold opacity-50 blur-md
+sm:text-2xl"
+              aria-hidden="true"
+            >
+              bottle.vote
+            </h1>
+          </div>
         </Link>
 
         <div className="hidden items-center gap-4 sm:flex">
