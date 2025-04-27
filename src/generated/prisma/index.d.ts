@@ -2338,7 +2338,7 @@ export namespace Prisma {
 
   export type Vote_optionsGroupByOutputType = {
     id: bigint
-    vote_id: bigint | null
+    vote_id: bigint
     name: string
     vote_count: number
     _count: Vote_optionsCountAggregateOutputType | null
@@ -2367,7 +2367,7 @@ export namespace Prisma {
     vote_id?: boolean
     name?: boolean
     vote_count?: boolean
-    vote?: boolean | vote_options$voteArgs<ExtArgs>
+    vote?: boolean | votesDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["vote_options"]>
 
   export type vote_optionsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2375,7 +2375,7 @@ export namespace Prisma {
     vote_id?: boolean
     name?: boolean
     vote_count?: boolean
-    vote?: boolean | vote_options$voteArgs<ExtArgs>
+    vote?: boolean | votesDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["vote_options"]>
 
   export type vote_optionsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2383,7 +2383,7 @@ export namespace Prisma {
     vote_id?: boolean
     name?: boolean
     vote_count?: boolean
-    vote?: boolean | vote_options$voteArgs<ExtArgs>
+    vote?: boolean | votesDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["vote_options"]>
 
   export type vote_optionsSelectScalar = {
@@ -2395,23 +2395,23 @@ export namespace Prisma {
 
   export type vote_optionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "vote_id" | "name" | "vote_count", ExtArgs["result"]["vote_options"]>
   export type vote_optionsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    vote?: boolean | vote_options$voteArgs<ExtArgs>
+    vote?: boolean | votesDefaultArgs<ExtArgs>
   }
   export type vote_optionsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    vote?: boolean | vote_options$voteArgs<ExtArgs>
+    vote?: boolean | votesDefaultArgs<ExtArgs>
   }
   export type vote_optionsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    vote?: boolean | vote_options$voteArgs<ExtArgs>
+    vote?: boolean | votesDefaultArgs<ExtArgs>
   }
 
   export type $vote_optionsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "vote_options"
     objects: {
-      vote: Prisma.$votesPayload<ExtArgs> | null
+      vote: Prisma.$votesPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: bigint
-      vote_id: bigint | null
+      vote_id: bigint
       name: string
       vote_count: number
     }, ExtArgs["result"]["vote_options"]>
@@ -2808,7 +2808,7 @@ export namespace Prisma {
    */
   export interface Prisma__vote_optionsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    vote<T extends vote_options$voteArgs<ExtArgs> = {}>(args?: Subset<T, vote_options$voteArgs<ExtArgs>>): Prisma__votesClient<$Result.GetResult<Prisma.$votesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    vote<T extends votesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, votesDefaultArgs<ExtArgs>>): Prisma__votesClient<$Result.GetResult<Prisma.$votesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3238,25 +3238,6 @@ export namespace Prisma {
   }
 
   /**
-   * vote_options.vote
-   */
-  export type vote_options$voteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the votes
-     */
-    select?: votesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the votes
-     */
-    omit?: votesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: votesInclude<ExtArgs> | null
-    where?: votesWhereInput
-  }
-
-  /**
    * vote_options without action
    */
   export type vote_optionsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3307,6 +3288,7 @@ export namespace Prisma {
     created_at: Date | null
     expires_at: Date | null
     category_value: string | null
+    is_duplicate_vote: boolean | null
   }
 
   export type VotesMaxAggregateOutputType = {
@@ -3319,6 +3301,7 @@ export namespace Prisma {
     created_at: Date | null
     expires_at: Date | null
     category_value: string | null
+    is_duplicate_vote: boolean | null
   }
 
   export type VotesCountAggregateOutputType = {
@@ -3331,6 +3314,7 @@ export namespace Prisma {
     created_at: number
     expires_at: number
     category_value: number
+    is_duplicate_vote: number
     _all: number
   }
 
@@ -3355,6 +3339,7 @@ export namespace Prisma {
     created_at?: true
     expires_at?: true
     category_value?: true
+    is_duplicate_vote?: true
   }
 
   export type VotesMaxAggregateInputType = {
@@ -3367,6 +3352,7 @@ export namespace Prisma {
     created_at?: true
     expires_at?: true
     category_value?: true
+    is_duplicate_vote?: true
   }
 
   export type VotesCountAggregateInputType = {
@@ -3379,6 +3365,7 @@ export namespace Prisma {
     created_at?: true
     expires_at?: true
     category_value?: true
+    is_duplicate_vote?: true
     _all?: true
   }
 
@@ -3478,6 +3465,7 @@ export namespace Prisma {
     created_at: Date
     expires_at: Date
     category_value: string
+    is_duplicate_vote: boolean
     _count: VotesCountAggregateOutputType | null
     _avg: VotesAvgAggregateOutputType | null
     _sum: VotesSumAggregateOutputType | null
@@ -3509,6 +3497,7 @@ export namespace Prisma {
     created_at?: boolean
     expires_at?: boolean
     category_value?: boolean
+    is_duplicate_vote?: boolean
     vote_options?: boolean | votes$vote_optionsArgs<ExtArgs>
     users?: boolean | usersDefaultArgs<ExtArgs>
     _count?: boolean | VotesCountOutputTypeDefaultArgs<ExtArgs>
@@ -3524,6 +3513,7 @@ export namespace Prisma {
     created_at?: boolean
     expires_at?: boolean
     category_value?: boolean
+    is_duplicate_vote?: boolean
     users?: boolean | usersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["votes"]>
 
@@ -3537,6 +3527,7 @@ export namespace Prisma {
     created_at?: boolean
     expires_at?: boolean
     category_value?: boolean
+    is_duplicate_vote?: boolean
     users?: boolean | usersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["votes"]>
 
@@ -3550,9 +3541,10 @@ export namespace Prisma {
     created_at?: boolean
     expires_at?: boolean
     category_value?: boolean
+    is_duplicate_vote?: boolean
   }
 
-  export type votesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "category_name" | "vote_count" | "created_by" | "created_at" | "expires_at" | "category_value", ExtArgs["result"]["votes"]>
+  export type votesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "category_name" | "vote_count" | "created_by" | "created_at" | "expires_at" | "category_value" | "is_duplicate_vote", ExtArgs["result"]["votes"]>
   export type votesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     vote_options?: boolean | votes$vote_optionsArgs<ExtArgs>
     users?: boolean | usersDefaultArgs<ExtArgs>
@@ -3581,6 +3573,7 @@ export namespace Prisma {
       created_at: Date
       expires_at: Date
       category_value: string
+      is_duplicate_vote: boolean
     }, ExtArgs["result"]["votes"]>
     composites: {}
   }
@@ -4015,6 +4008,7 @@ export namespace Prisma {
     readonly created_at: FieldRef<"votes", 'DateTime'>
     readonly expires_at: FieldRef<"votes", 'DateTime'>
     readonly category_value: FieldRef<"votes", 'String'>
+    readonly is_duplicate_vote: FieldRef<"votes", 'Boolean'>
   }
     
 
@@ -4496,7 +4490,8 @@ export namespace Prisma {
     created_by: 'created_by',
     created_at: 'created_at',
     expires_at: 'expires_at',
-    category_value: 'category_value'
+    category_value: 'category_value',
+    is_duplicate_vote: 'is_duplicate_vote'
   };
 
   export type VotesScalarFieldEnum = (typeof VotesScalarFieldEnum)[keyof typeof VotesScalarFieldEnum]
@@ -4588,6 +4583,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -4659,15 +4661,15 @@ export namespace Prisma {
     OR?: vote_optionsWhereInput[]
     NOT?: vote_optionsWhereInput | vote_optionsWhereInput[]
     id?: BigIntFilter<"vote_options"> | bigint | number
-    vote_id?: BigIntNullableFilter<"vote_options"> | bigint | number | null
+    vote_id?: BigIntFilter<"vote_options"> | bigint | number
     name?: StringFilter<"vote_options"> | string
     vote_count?: IntFilter<"vote_options"> | number
-    vote?: XOR<VotesNullableScalarRelationFilter, votesWhereInput> | null
+    vote?: XOR<VotesScalarRelationFilter, votesWhereInput>
   }
 
   export type vote_optionsOrderByWithRelationInput = {
     id?: SortOrder
-    vote_id?: SortOrderInput | SortOrder
+    vote_id?: SortOrder
     name?: SortOrder
     vote_count?: SortOrder
     vote?: votesOrderByWithRelationInput
@@ -4678,15 +4680,15 @@ export namespace Prisma {
     AND?: vote_optionsWhereInput | vote_optionsWhereInput[]
     OR?: vote_optionsWhereInput[]
     NOT?: vote_optionsWhereInput | vote_optionsWhereInput[]
-    vote_id?: BigIntNullableFilter<"vote_options"> | bigint | number | null
+    vote_id?: BigIntFilter<"vote_options"> | bigint | number
     name?: StringFilter<"vote_options"> | string
     vote_count?: IntFilter<"vote_options"> | number
-    vote?: XOR<VotesNullableScalarRelationFilter, votesWhereInput> | null
+    vote?: XOR<VotesScalarRelationFilter, votesWhereInput>
   }, "id">
 
   export type vote_optionsOrderByWithAggregationInput = {
     id?: SortOrder
-    vote_id?: SortOrderInput | SortOrder
+    vote_id?: SortOrder
     name?: SortOrder
     vote_count?: SortOrder
     _count?: vote_optionsCountOrderByAggregateInput
@@ -4701,7 +4703,7 @@ export namespace Prisma {
     OR?: vote_optionsScalarWhereWithAggregatesInput[]
     NOT?: vote_optionsScalarWhereWithAggregatesInput | vote_optionsScalarWhereWithAggregatesInput[]
     id?: BigIntWithAggregatesFilter<"vote_options"> | bigint | number
-    vote_id?: BigIntNullableWithAggregatesFilter<"vote_options"> | bigint | number | null
+    vote_id?: BigIntWithAggregatesFilter<"vote_options"> | bigint | number
     name?: StringWithAggregatesFilter<"vote_options"> | string
     vote_count?: IntWithAggregatesFilter<"vote_options"> | number
   }
@@ -4719,6 +4721,7 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"votes"> | Date | string
     expires_at?: DateTimeFilter<"votes"> | Date | string
     category_value?: StringFilter<"votes"> | string
+    is_duplicate_vote?: BoolFilter<"votes"> | boolean
     vote_options?: Vote_optionsListRelationFilter
     users?: XOR<UsersScalarRelationFilter, usersWhereInput>
   }
@@ -4733,6 +4736,7 @@ export namespace Prisma {
     created_at?: SortOrder
     expires_at?: SortOrder
     category_value?: SortOrder
+    is_duplicate_vote?: SortOrder
     vote_options?: vote_optionsOrderByRelationAggregateInput
     users?: usersOrderByWithRelationInput
   }
@@ -4750,6 +4754,7 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"votes"> | Date | string
     expires_at?: DateTimeFilter<"votes"> | Date | string
     category_value?: StringFilter<"votes"> | string
+    is_duplicate_vote?: BoolFilter<"votes"> | boolean
     vote_options?: Vote_optionsListRelationFilter
     users?: XOR<UsersScalarRelationFilter, usersWhereInput>
   }, "id">
@@ -4764,6 +4769,7 @@ export namespace Prisma {
     created_at?: SortOrder
     expires_at?: SortOrder
     category_value?: SortOrder
+    is_duplicate_vote?: SortOrder
     _count?: votesCountOrderByAggregateInput
     _avg?: votesAvgOrderByAggregateInput
     _max?: votesMaxOrderByAggregateInput
@@ -4784,6 +4790,7 @@ export namespace Prisma {
     created_at?: DateTimeWithAggregatesFilter<"votes"> | Date | string
     expires_at?: DateTimeWithAggregatesFilter<"votes"> | Date | string
     category_value?: StringWithAggregatesFilter<"votes"> | string
+    is_duplicate_vote?: BoolWithAggregatesFilter<"votes"> | boolean
   }
 
   export type usersCreateInput = {
@@ -4843,12 +4850,12 @@ export namespace Prisma {
     id?: bigint | number
     name: string
     vote_count?: number
-    vote?: votesCreateNestedOneWithoutVote_optionsInput
+    vote: votesCreateNestedOneWithoutVote_optionsInput
   }
 
   export type vote_optionsUncheckedCreateInput = {
     id?: bigint | number
-    vote_id?: bigint | number | null
+    vote_id: bigint | number
     name: string
     vote_count?: number
   }
@@ -4857,19 +4864,19 @@ export namespace Prisma {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     name?: StringFieldUpdateOperationsInput | string
     vote_count?: IntFieldUpdateOperationsInput | number
-    vote?: votesUpdateOneWithoutVote_optionsNestedInput
+    vote?: votesUpdateOneRequiredWithoutVote_optionsNestedInput
   }
 
   export type vote_optionsUncheckedUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    vote_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    vote_id?: BigIntFieldUpdateOperationsInput | bigint | number
     name?: StringFieldUpdateOperationsInput | string
     vote_count?: IntFieldUpdateOperationsInput | number
   }
 
   export type vote_optionsCreateManyInput = {
     id?: bigint | number
-    vote_id?: bigint | number | null
+    vote_id: bigint | number
     name: string
     vote_count?: number
   }
@@ -4882,7 +4889,7 @@ export namespace Prisma {
 
   export type vote_optionsUncheckedUpdateManyInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    vote_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    vote_id?: BigIntFieldUpdateOperationsInput | bigint | number
     name?: StringFieldUpdateOperationsInput | string
     vote_count?: IntFieldUpdateOperationsInput | number
   }
@@ -4896,6 +4903,7 @@ export namespace Prisma {
     created_at?: Date | string
     expires_at: Date | string
     category_value: string
+    is_duplicate_vote: boolean
     vote_options?: vote_optionsCreateNestedManyWithoutVoteInput
     users: usersCreateNestedOneWithoutCreatedVotesInput
   }
@@ -4910,6 +4918,7 @@ export namespace Prisma {
     created_at?: Date | string
     expires_at: Date | string
     category_value: string
+    is_duplicate_vote: boolean
     vote_options?: vote_optionsUncheckedCreateNestedManyWithoutVoteInput
   }
 
@@ -4922,6 +4931,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
     category_value?: StringFieldUpdateOperationsInput | string
+    is_duplicate_vote?: BoolFieldUpdateOperationsInput | boolean
     vote_options?: vote_optionsUpdateManyWithoutVoteNestedInput
     users?: usersUpdateOneRequiredWithoutCreatedVotesNestedInput
   }
@@ -4936,6 +4946,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
     category_value?: StringFieldUpdateOperationsInput | string
+    is_duplicate_vote?: BoolFieldUpdateOperationsInput | boolean
     vote_options?: vote_optionsUncheckedUpdateManyWithoutVoteNestedInput
   }
 
@@ -4949,6 +4960,7 @@ export namespace Prisma {
     created_at?: Date | string
     expires_at: Date | string
     category_value: string
+    is_duplicate_vote: boolean
   }
 
   export type votesUpdateManyMutationInput = {
@@ -4960,6 +4972,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
     category_value?: StringFieldUpdateOperationsInput | string
+    is_duplicate_vote?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type votesUncheckedUpdateManyInput = {
@@ -4972,6 +4985,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
     category_value?: StringFieldUpdateOperationsInput | string
+    is_duplicate_vote?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UuidFilter<$PrismaModel = never> = {
@@ -5114,17 +5128,6 @@ export namespace Prisma {
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
-  export type BigIntNullableFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
-  }
-
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -5136,9 +5139,9 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type VotesNullableScalarRelationFilter = {
-    is?: votesWhereInput | null
-    isNot?: votesWhereInput | null
+  export type VotesScalarRelationFilter = {
+    is?: votesWhereInput
+    isNot?: votesWhereInput
   }
 
   export type vote_optionsCountOrderByAggregateInput = {
@@ -5190,22 +5193,6 @@ export namespace Prisma {
     _max?: NestedBigIntFilter<$PrismaModel>
   }
 
-  export type BigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedBigIntNullableFilter<$PrismaModel>
-    _min?: NestedBigIntNullableFilter<$PrismaModel>
-    _max?: NestedBigIntNullableFilter<$PrismaModel>
-  }
-
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -5233,6 +5220,11 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type Vote_optionsListRelationFilter = {
     every?: vote_optionsWhereInput
     some?: vote_optionsWhereInput
@@ -5258,6 +5250,7 @@ export namespace Prisma {
     created_at?: SortOrder
     expires_at?: SortOrder
     category_value?: SortOrder
+    is_duplicate_vote?: SortOrder
   }
 
   export type votesAvgOrderByAggregateInput = {
@@ -5275,6 +5268,7 @@ export namespace Prisma {
     created_at?: SortOrder
     expires_at?: SortOrder
     category_value?: SortOrder
+    is_duplicate_vote?: SortOrder
   }
 
   export type votesMinOrderByAggregateInput = {
@@ -5287,6 +5281,7 @@ export namespace Prisma {
     created_at?: SortOrder
     expires_at?: SortOrder
     category_value?: SortOrder
+    is_duplicate_vote?: SortOrder
   }
 
   export type votesSumOrderByAggregateInput = {
@@ -5306,6 +5301,14 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type votesCreateNestedManyWithoutUsersInput = {
@@ -5380,22 +5383,12 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type votesUpdateOneWithoutVote_optionsNestedInput = {
+  export type votesUpdateOneRequiredWithoutVote_optionsNestedInput = {
     create?: XOR<votesCreateWithoutVote_optionsInput, votesUncheckedCreateWithoutVote_optionsInput>
     connectOrCreate?: votesCreateOrConnectWithoutVote_optionsInput
     upsert?: votesUpsertWithoutVote_optionsInput
-    disconnect?: votesWhereInput | boolean
-    delete?: votesWhereInput | boolean
     connect?: votesWhereUniqueInput
     update?: XOR<XOR<votesUpdateToOneWithWhereWithoutVote_optionsInput, votesUpdateWithoutVote_optionsInput>, votesUncheckedUpdateWithoutVote_optionsInput>
-  }
-
-  export type NullableBigIntFieldUpdateOperationsInput = {
-    set?: bigint | number | null
-    increment?: bigint | number
-    decrement?: bigint | number
-    multiply?: bigint | number
-    divide?: bigint | number
   }
 
   export type vote_optionsCreateNestedManyWithoutVoteInput = {
@@ -5420,6 +5413,10 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type vote_optionsUpdateManyWithoutVoteNestedInput = {
@@ -5578,17 +5575,6 @@ export namespace Prisma {
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
-  export type NestedBigIntNullableFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
-  }
-
   export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -5614,33 +5600,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type NestedBigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedBigIntNullableFilter<$PrismaModel>
-    _min?: NestedBigIntNullableFilter<$PrismaModel>
-    _max?: NestedBigIntNullableFilter<$PrismaModel>
-  }
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -5670,6 +5629,11 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -5684,6 +5648,14 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type votesCreateWithoutUsersInput = {
     id?: bigint | number
     title: string
@@ -5693,6 +5665,7 @@ export namespace Prisma {
     created_at?: Date | string
     expires_at: Date | string
     category_value: string
+    is_duplicate_vote: boolean
     vote_options?: vote_optionsCreateNestedManyWithoutVoteInput
   }
 
@@ -5705,6 +5678,7 @@ export namespace Prisma {
     created_at?: Date | string
     expires_at: Date | string
     category_value: string
+    is_duplicate_vote: boolean
     vote_options?: vote_optionsUncheckedCreateNestedManyWithoutVoteInput
   }
 
@@ -5747,6 +5721,7 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"votes"> | Date | string
     expires_at?: DateTimeFilter<"votes"> | Date | string
     category_value?: StringFilter<"votes"> | string
+    is_duplicate_vote?: BoolFilter<"votes"> | boolean
   }
 
   export type votesCreateWithoutVote_optionsInput = {
@@ -5758,6 +5733,7 @@ export namespace Prisma {
     created_at?: Date | string
     expires_at: Date | string
     category_value: string
+    is_duplicate_vote: boolean
     users: usersCreateNestedOneWithoutCreatedVotesInput
   }
 
@@ -5771,6 +5747,7 @@ export namespace Prisma {
     created_at?: Date | string
     expires_at: Date | string
     category_value: string
+    is_duplicate_vote: boolean
   }
 
   export type votesCreateOrConnectWithoutVote_optionsInput = {
@@ -5798,6 +5775,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
     category_value?: StringFieldUpdateOperationsInput | string
+    is_duplicate_vote?: BoolFieldUpdateOperationsInput | boolean
     users?: usersUpdateOneRequiredWithoutCreatedVotesNestedInput
   }
 
@@ -5811,6 +5789,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
     category_value?: StringFieldUpdateOperationsInput | string
+    is_duplicate_vote?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type vote_optionsCreateWithoutVoteInput = {
@@ -5875,7 +5854,7 @@ export namespace Prisma {
     OR?: vote_optionsScalarWhereInput[]
     NOT?: vote_optionsScalarWhereInput | vote_optionsScalarWhereInput[]
     id?: BigIntFilter<"vote_options"> | bigint | number
-    vote_id?: BigIntNullableFilter<"vote_options"> | bigint | number | null
+    vote_id?: BigIntFilter<"vote_options"> | bigint | number
     name?: StringFilter<"vote_options"> | string
     vote_count?: IntFilter<"vote_options"> | number
   }
@@ -5914,6 +5893,7 @@ export namespace Prisma {
     created_at?: Date | string
     expires_at: Date | string
     category_value: string
+    is_duplicate_vote: boolean
   }
 
   export type votesUpdateWithoutUsersInput = {
@@ -5925,6 +5905,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
     category_value?: StringFieldUpdateOperationsInput | string
+    is_duplicate_vote?: BoolFieldUpdateOperationsInput | boolean
     vote_options?: vote_optionsUpdateManyWithoutVoteNestedInput
   }
 
@@ -5937,6 +5918,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
     category_value?: StringFieldUpdateOperationsInput | string
+    is_duplicate_vote?: BoolFieldUpdateOperationsInput | boolean
     vote_options?: vote_optionsUncheckedUpdateManyWithoutVoteNestedInput
   }
 
@@ -5949,6 +5931,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
     category_value?: StringFieldUpdateOperationsInput | string
+    is_duplicate_vote?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type vote_optionsCreateManyVoteInput = {
