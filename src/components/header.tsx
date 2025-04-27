@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/ui/button";
+import { Dropdown } from "@/ui/dropdown";
 import { LinkButton } from "@/ui/link-button";
 
 import { MoonIcon, PlusIcon, SunIcon, UserIcon } from "lucide-react";
@@ -22,13 +23,13 @@ export const Header = () => {
   }
 
   return (
-    <header className="bg-element/50 fixed top-0 left-0 w-full backdrop-blur-md">
+    <header className="bg-element/50 fixed top-0 left-0 w-full border-b backdrop-blur-md">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/">
           <h1 className="text-gradient text-xl font-extrabold sm:text-2xl">bottle.vote</h1>
         </Link>
 
-        <div className="flex items-center gap-4">
+        <div className="hidden items-center gap-4 sm:flex">
           <Button
             variant="icon"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -52,6 +53,19 @@ export const Header = () => {
             <UserIcon className="h-4 w-4" />
             <span className="sr-only">프로필</span>
           </LinkButton>
+        </div>
+
+        <div className="sm:hidden">
+          <Dropdown className="right-4">
+            <Link href="/profile">프로필</Link>
+            <Link href="/vote/create">투표 생성하기</Link>
+            <Button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="w-full text-left font-medium"
+            >
+              테마 변경
+            </Button>
+          </Dropdown>
         </div>
       </div>
     </header>
