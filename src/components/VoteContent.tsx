@@ -5,10 +5,74 @@ import { type vote_options } from "@/generated/prisma";
 import { cn } from "@/utils/cn";
 
 import { motion } from "motion/react";
-import { type FormEvent, useState } from "react";
+import { type Dispatch, type FormEvent, type SetStateAction, useState } from "react";
 
-export const RadioVotes = () => {
-  return;
+export const Votes = ({
+  voteOptions,
+  isDuplicateVote,
+  checkedRadio,
+  checkedCheckbox,
+  setCheckedRadio,
+  setCheckedCheckbox
+}: {
+  voteOptions: vote_options[];
+  isDuplicateVote: boolean;
+  checkedRadio: string;
+  checkedCheckbox: string[];
+  setCheckedRadio: Dispatch<SetStateAction<string>>;
+  setCheckedCheckbox: Dispatch<SetStateAction<string[]>>;
+}) => {
+  const handleCheckbox = (name: string) => {
+    setCheckedCheckbox((prev) =>
+      prev.includes(name) ? prev.filter((item) => item !== name) : [...prev, name]
+    );
+  };
+
+  const handleRadio = (name: string) => {
+    setCheckedRadio(name);
+  };
+
+  return (
+    <>
+      {voteOptions.map(({ name, id }) => {
+        return (
+          <motion.div
+            whileHover={{ y: -5 }}
+            key={id}
+            className="flex hover:shadow-xl"
+          >
+            <label
+              htmlFor={id.toString()}
+              className={cn(
+                `bg-element flex flex-1 appearance-none items-center gap-2 rounded-lg border p-4
+text-left accent-fuchsia-500 transition hover:border-fuchsia-500`,
+                checkedRadio === name && "border-fuchsia-500 bg-fuchsia-100",
+                checkedCheckbox.includes(name) && "border-fuchsia-500 bg-fuchsia-100"
+              )}
+            >
+              <input
+                id={id.toString()}
+                value={name}
+                name="voteOption"
+                type={isDuplicateVote ? "checkbox" : "radio"}
+                onChange={() => {}}
+                checked={checkedRadio === name || checkedCheckbox.includes(name)}
+                className="rounded-full"
+                onClick={() => (isDuplicateVote ? handleCheckbox(name) : handleRadio(name))}
+              />
+              {name}
+            </label>
+          </motion.div>
+        );
+      })}
+      <Button
+        type="submit"
+        className="gradient-bg"
+      >
+        투표하기
+      </Button>
+    </>
+  );
 };
 
 export const VoteContent = ({
@@ -21,16 +85,6 @@ export const VoteContent = ({
   const [type, setType] = useState("투표");
   const [checkedRadio, setCheckedRadio] = useState("");
   const [checkedCheckbox, setCheckedCheckbox] = useState<string[]>([]);
-
-  const handleCheckbox = (name: string) => {
-    setCheckedCheckbox((prev) =>
-      prev.includes(name) ? prev.filter((item) => item !== name) : [...prev, name]
-    );
-  };
-
-  const handleRadio = (name: string) => {
-    setCheckedRadio(name);
-  };
 
   const handleOnSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -76,45 +130,14 @@ export const VoteContent = ({
         className="flex flex-col space-y-4"
       >
         {type === "투표" && (
-          <>
-            {voteOptions.map(({ name, id }) => {
-              return (
-                <motion.div
-                  whileHover={{ y: -5 }}
-                  key={id}
-                  className="flex hover:shadow-xl"
-                >
-                  <label
-                    htmlFor={id.toString()}
-                    className={cn(
-                      `bg-element flex flex-1 appearance-none items-center gap-2 rounded-lg border p-4
-text-left accent-fuchsia-500 transition hover:border-fuchsia-500`,
-                      checkedRadio === name && "border-fuchsia-500 bg-fuchsia-100",
-                      checkedCheckbox.includes(name) && "border-fuchsia-500 bg-fuchsia-100"
-                    )}
-                  >
-                    <input
-                      id={id.toString()}
-                      value={name}
-                      name="voteOption"
-                      type={isDuplicateVote ? "checkbox" : "radio"}
-                      onChange={() => {}}
-                      checked={checkedRadio === name || checkedCheckbox.includes(name)}
-                      className="rounded-full"
-                      onClick={() => (isDuplicateVote ? handleCheckbox(name) : handleRadio(name))}
-                    />
-                    {name}
-                  </label>
-                </motion.div>
-              );
-            })}
-            <Button
-              type="submit"
-              className="gradient-bg"
-            >
-              투표하기
-            </Button>
-          </>
+          <Votes
+            voteOptions={voteOptions}
+            isDuplicateVote={isDuplicateVote}
+            checkedRadio={checkedRadio}
+            checkedCheckbox={checkedCheckbox}
+            setCheckedRadio={setCheckedRadio}
+            setCheckedCheckbox={setCheckedCheckbox}
+          />
         )}
       </form>
     </div>
