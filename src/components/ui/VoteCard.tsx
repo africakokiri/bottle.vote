@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import * as motion from "motion/react-client";
 import Link from "next/link";
 
-type VoteWithUser = Prisma.votesGetPayload<{
+type VoteWithUserAndOption = Prisma.votesGetPayload<{
   include: {
     users: true;
     vote_options: true;
@@ -12,7 +12,7 @@ type VoteWithUser = Prisma.votesGetPayload<{
 }>;
 
 type VoteCardProps = {
-  vote: VoteWithUser;
+  vote: VoteWithUserAndOption;
   className?: string;
 };
 
