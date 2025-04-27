@@ -1,8 +1,6 @@
 "use server";
 
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { prisma } from "@/libs/prisma/prisma";
 
 export const getVoteById = async (id: number) => {
   const vote = await prisma.votes.findUnique({
@@ -72,11 +70,11 @@ export const getVotesLength = async () => {
       activeVotesLength: bigint;
     }[]
   >`
-  SELECT 
-    COUNT(*) AS "allVotesLength",
-    COUNT(CASE WHEN expires_at >= NOW() THEN 1 END) AS "activeVotesLength"
-  FROM votes
-`;
+    SELECT 
+      COUNT(*) AS "allVotesLength",
+      COUNT(CASE WHEN expires_at >= NOW() THEN 1 END) AS "activeVotesLength"
+    FROM votes
+  `;
 
   const { allVotesLength, activeVotesLength } = result[0];
 
