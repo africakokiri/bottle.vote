@@ -20,8 +20,8 @@ export const LinkButton = ({ children, className, ref, variant, href, ...props }
     <Link
       href={href}
       className={cn(
-        `bg-element min-w-fit cursor-pointer rounded-lg px-4 py-2 font-semibold hover:bg-neutral-200
-dark:hover:bg-neutral-700`,
+        `bg-element min-w-fit cursor-pointer rounded-lg border px-4 py-2 font-semibold
+hover:bg-neutral-200 dark:hover:bg-neutral-700`,
         linkButtonVariant,
         className
       )}
