@@ -1,6 +1,8 @@
+import { Header } from "@/components/header";
 import "@/styles/globals.css";
 
 import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,8 +20,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body className={inter.className}>{children}</body>
+    <html
+      lang="ko"
+      suppressHydrationWarning
+    >
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          <div className="my-16">{children}</div>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
