@@ -12,7 +12,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 export const Button = ({ children, className, variant, ref, ...props }: ButtonProps) => {
   let buttonVariant;
 
-  if (variant === "icon") buttonVariant = "p-3 border-none";
+  if (variant === "icon") buttonVariant = "p-3 border-none bg-transparent";
 
   return (
     <button

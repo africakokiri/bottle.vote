@@ -14,7 +14,7 @@ type LinkButtonProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 export const LinkButton = ({ children, className, ref, variant, href, ...props }: LinkButtonProps) => {
   let linkButtonVariant;
 
-  if (variant === "icon") linkButtonVariant = "p-3 border-none";
+  if (variant === "icon") linkButtonVariant = "p-3 border-none bg-transparent";
 
   return (
     <Link
