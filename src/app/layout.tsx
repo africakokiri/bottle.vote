@@ -1,5 +1,4 @@
-import { Header } from "@/components/Header";
-import { TanstackQueryWrapper } from "@/libs/tanstack-query/TanstackQueryWrapper";
+import { Header } from "@/components/header";
 import "@/styles/globals.css";
 
 import type { Metadata } from "next";
@@ -10,7 +9,6 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Bottle | 보틀",
-  description: "온라인 여론조사 및 투표 플랫폼",
   icons: {
     icon: "/icons/bottle.svg"
   }
@@ -26,17 +24,15 @@ export default function RootLayout({
       lang="ko"
       suppressHydrationWarning
     >
-      <body className={`${inter.className}`}>
-        <TanstackQueryWrapper>
-          <ThemeProvider
-            attribute="class"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Header />
-            <div className="py-16">{children}</div>
-          </ThemeProvider>
-        </TanstackQueryWrapper>
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          <div className="my-16">{children}</div>
+        </ThemeProvider>
       </body>
     </html>
   );

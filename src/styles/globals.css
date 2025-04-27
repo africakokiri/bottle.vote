@@ -30,11 +30,11 @@
     @apply mx-auto px-4 py-8;
   }
 
-  .gradient-text {
+  .text-gradient {
     @apply bg-gradient-to-r from-blue-500 to-fuchsia-500 bg-clip-text text-transparent;
   }
 
-  .gradient-bg {
+  .bg-gradient {
     @apply bg-gradient-to-r from-blue-500 to-fuchsia-500 text-white hover:from-blue-400 hover:to-fuchsia-400;
   }
 }
@@ -46,12 +46,5 @@
 
   body {
     @apply bg-background text-foreground;
-  }
-}
-
-/* 메인 화면 투표 개수 조정 */
-@media (max-width: 640px) {
-  .vote-grid > :nth-child(n + 6) {
-    display: none;
   }
 }
