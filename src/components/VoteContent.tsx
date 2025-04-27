@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
-import type { Prisma, vote_options, votes } from "@/generated/prisma";
+import type { Prisma, vote_options } from "@/generated/prisma";
 import { cn } from "@/utils/cn";
 
 import { motion } from "motion/react";

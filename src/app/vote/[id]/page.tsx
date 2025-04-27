@@ -77,10 +77,7 @@ px-2 text-sm font-semibold text-neutral-700"
             </div>
           </div>
 
-          <VoteContent
-            voteOptions={vote.vote_options}
-            isDuplicateVote={vote.is_duplicate_vote}
-          />
+          <VoteContent vote={vote} />
         </div>
       </div>
     </div>
