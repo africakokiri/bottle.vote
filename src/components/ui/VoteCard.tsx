@@ -31,8 +31,8 @@ hover:shadow-xl`}
           <header className="mb-2 space-y-2">
             <div className="flex justify-between">
               <div
-                className="bg-background dark:text-foreground w-fit rounded-full border px-2 py-0.5
-text-xs text-[10px] font-semibold text-neutral-700"
+                className="bg-element dark:text-foreground w-fit rounded-full border px-2 py-0.5 text-xs
+text-[10px] font-semibold text-neutral-700"
               >
                 {vote.category_name}
               </div>
